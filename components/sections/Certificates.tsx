@@ -75,7 +75,6 @@ export function Certificates() {
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                   ) : null}
-                  <div className="absolute inset-0 bg-gradient-to-t from-storm-bg2 via-storm-bg2/30 to-transparent" />
 
                   {/* Issuer badge over image */}
                   <div className="absolute top-3 right-3">

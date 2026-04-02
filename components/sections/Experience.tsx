@@ -61,25 +61,28 @@ export function Experience() {
                 desarrollo móvil.
               </p>
 
-              <ul className="flex flex-col gap-1.5" aria-label="Áreas de formación">
+              <div className="flex flex-wrap gap-1.5 pt-1">
                 {[
-                  "Programación orientada a objetos · Java, Python",
-                  "Desarrollo backend · APIs REST y microservicios",
-                  "Bases de datos relacionales y NoSQL",
-                  "Contenedores y DevOps · Docker",
-                  "Desarrollo móvil · Android, Flutter (Kotlin, Dart)",
-                  "Metodologías ágiles · Scrum, Git",
-                  "Seguridad en aplicaciones web",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2 text-sm text-storm-fg2">
-                    <span
-                      className="mt-1.5 size-1 shrink-0 rounded-full bg-storm-accent"
-                      aria-hidden="true"
-                    />
-                    {item}
-                  </li>
+                  "Java",
+                  "Python",
+                  "APIs REST",
+                  "Microservicios",
+                  "PostgreSQL",
+                  "NoSQL",
+                  "Docker",
+                  "Android",
+                  "Flutter",
+                  "Scrum",
+                  "Git",
+                ].map((tech) => (
+                  <span
+                    key={tech}
+                    className="rounded-md bg-storm-bg3 border border-storm-border px-2 py-0.5 text-xs text-storm-accent2"
+                  >
+                    {tech}
+                  </span>
                 ))}
-              </ul>
+              </div>
             </article>
           </motion.div>
 
