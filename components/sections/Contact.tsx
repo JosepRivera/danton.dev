@@ -183,26 +183,16 @@ export function Contact() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
-          className="flex flex-col sm:flex-row gap-3 justify-center items-center"
+          className="flex justify-center"
         >
           <a
             href="/cv.pdf"
             download
-            className="group relative px-6 py-3 rounded-xl border border-storm-accent/30 bg-storm-accent/5 text-storm-fg font-medium hover:bg-storm-accent/10 hover:border-storm-accent/50 transition-all duration-200 hover:-translate-y-0.5 flex items-center gap-2 justify-center sm:justify-start w-full sm:w-auto"
+            className="group relative px-6 py-3 rounded-xl border border-storm-accent/30 bg-storm-accent/5 text-storm-fg font-medium hover:bg-storm-accent/10 hover:border-storm-accent/50 transition-all duration-200 hover:-translate-y-0.5 flex items-center gap-2 justify-center w-full sm:w-auto"
           >
             <Download className="size-4 group-hover:translate-y-0.5 transition-transform duration-200" />
             Descargar CV
           </a>
-
-          <p className="text-xs text-storm-fg2">
-            o escríbeme a{" "}
-            <a
-              href="mailto:josepdanton1518@gmail.com"
-              className="text-storm-accent font-semibold hover:underline"
-            >
-              josepdanton1518@gmail.com
-            </a>
-          </p>
         </motion.div>
       </div>
     </section>

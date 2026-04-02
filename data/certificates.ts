@@ -9,7 +9,7 @@ export interface Certificate {
 
 export const certificates: Certificate[] = [
   {
-    title: "Universidad Python — Cero a Experto (+114 hrs)",
+    title: "Universidad Python",
     issuer: "Udemy",
     date: "Marzo 2026",
     duration: "114 horas",
@@ -17,7 +17,7 @@ export const certificates: Certificate[] = [
     imagePath: "/images/cert-python.jpg",
   },
   {
-    title: "Universidad Java — Cero a Experto (+155 hrs)",
+    title: "Universidad Java",
     issuer: "Udemy",
     date: "Marzo 2026",
     duration: "155 horas",

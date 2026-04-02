@@ -163,23 +163,5 @@
   }
   section[id] {
     scroll-margin-top: 80px;
-    position: relative;
-  }
-
-  /* Transiciones sutiles entre secciones */
-  section[id]::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(104, 136, 200, 0.08) 50%,
-      transparent 100%
-    );
-    opacity: 0;
   }
 }
