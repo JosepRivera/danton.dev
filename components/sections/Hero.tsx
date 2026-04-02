@@ -80,14 +80,20 @@ export function Hero() {
             variants={makeVariant(0)}
             initial="hidden"
             animate="visible"
-            className="flex flex-wrap items-center justify-center md:justify-start gap-2"
+            className="flex flex-col items-center gap-3 md:items-start w-full"
           >
-            <span className="inline-flex items-center gap-1.5 text-xs text-storm-fg2 bg-storm-bg2/40 border border-storm-border rounded-full px-3 py-1.5">
-              <span className="size-1.5 rounded-full bg-emerald-500" aria-hidden="true" />
-              Disponible para colaborar en proyectos y equipos de desarrollo.
-            </span>
-            <span className="inline-flex items-center gap-1 text-xs text-storm-fg2">
-              <MapPin className="size-3" aria-hidden="true" />
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-storm-accent/10 to-transparent border border-storm-accent/30 rounded-lg px-4 py-2.5 backdrop-blur-sm">
+              <span
+                className="size-2 rounded-full bg-storm-accent animate-pulse"
+                aria-hidden="true"
+              />
+              <span className="text-sm font-medium text-storm-fg italic">
+                <span className="text-storm-accent">"</span>Creando software con propósito
+                <span className="text-storm-accent">"</span>
+              </span>
+            </div>
+            <span className="inline-flex items-center gap-1.5 text-xs text-storm-fg2">
+              <MapPin className="size-3.5 text-storm-accent" aria-hidden="true" />
               Lima, Perú
             </span>
           </motion.div>
