@@ -26,6 +26,9 @@
       "correctness": {
         "useUniqueElementIds": "off"
       },
+      "style": {
+        "useComponentExportOnlyModules": "off"
+      },
       "suspicious": {
         "noExplicitAny": "error",
         "noUnknownAtRules": {
