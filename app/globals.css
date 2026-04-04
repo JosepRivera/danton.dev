@@ -168,9 +168,24 @@
   animation: fade-in-scale 0.7s ease-out both;
 }
 
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out 1s infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-up,
-  .animate-fade-scale {
+  .animate-fade-scale,
+  .animate-float {
     animation: none;
     opacity: 1;
     transform: none;

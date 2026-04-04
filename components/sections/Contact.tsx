@@ -108,18 +108,21 @@ export function Contact() {
           {contactLinks.map((link, i) => {
             const Icon = link.icon;
             return (
-              <a
+              <div
                 key={link.label}
+                className={`transition-all duration-500 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
+                style={{ transitionDelay: inView ? `${100 + i * 100}ms` : "0ms" }}
+              >
+              <a
                 href={link.href}
                 target={link.label !== "Email" ? "_blank" : undefined}
                 rel={link.label !== "Email" ? "noopener noreferrer" : undefined}
-                className={`group relative p-6 rounded-2xl border border-storm-border bg-gradient-to-br from-storm-bg2 to-storm-bg overflow-hidden hover:border-storm-accent/50 hover:-translate-y-1 transition-all duration-300 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
-                style={{ transitionDelay: inView ? `${100 + i * 100}ms` : "0ms" }}
+                className="group relative p-6 rounded-2xl border border-storm-border bg-gradient-to-br from-storm-bg2 to-storm-bg overflow-hidden hover:border-storm-accent/50 hover:-translate-y-1 transition-[transform,border-color,box-shadow,background-color] duration-150"
                 aria-label={`Contactar por ${link.label}`}
               >
                 {/* Fondo decorativo */}
                 <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-150"
                   aria-hidden="true"
                 >
                   <div className={`absolute inset-0 bg-gradient-to-br ${link.color} opacity-5`} />
@@ -127,14 +130,14 @@ export function Contact() {
 
                 <div className="relative flex flex-col gap-3">
                   <div className="flex items-center justify-between">
-                    <div className="p-2.5 rounded-lg bg-storm-bg3 group-hover:bg-storm-accent/10 transition-colors duration-300">
+                    <div className="p-2.5 rounded-lg bg-storm-bg3 group-hover:bg-storm-accent/10 transition-colors duration-150">
                       <Icon
-                        className="size-5 text-storm-accent group-hover:text-storm-accent2 transition-colors duration-300"
+                        className="size-5 text-storm-accent group-hover:text-storm-accent2 transition-colors duration-150"
                         aria-hidden="true"
                       />
                     </div>
                     <ArrowUpRight
-                      className="size-4 text-storm-fg2 group-hover:text-storm-fg group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300 opacity-0 group-hover:opacity-100"
+                      className="size-4 text-storm-fg2 group-hover:text-storm-fg group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-150 opacity-0 group-hover:opacity-100"
                       aria-hidden="true"
                     />
                   </div>
@@ -143,12 +146,13 @@ export function Contact() {
                     <p className="text-xs font-semibold text-storm-fg2 uppercase tracking-wider mb-1">
                       {link.label}
                     </p>
-                    <p className="text-sm font-medium text-storm-fg group-hover:text-storm-accent2 transition-colors duration-300 break-all">
+                    <p className="text-sm font-medium text-storm-fg group-hover:text-storm-accent2 transition-colors duration-150 break-all">
                       {link.text}
                     </p>
                   </div>
                 </div>
               </a>
+              </div>
             );
           })}
         </div>

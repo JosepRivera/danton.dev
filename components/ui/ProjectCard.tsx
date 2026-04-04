@@ -245,7 +245,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
   return (
     <article
       ref={ref}
-      className={`group flex flex-col rounded-xl border border-storm-border bg-storm-bg2 overflow-hidden hover:border-storm-accent/30 hover:-translate-y-1 transition-[border-color,transform] duration-150 ${animClass}`}
+      className={`group flex flex-col rounded-xl border border-storm-border bg-storm-bg2 overflow-hidden hover:border-storm-accent/30 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-8px_rgba(104,136,200,0.12)] transition-[border-color,transform,box-shadow] duration-200 ease-out ${animClass}`}
       style={delay}
     >
       {/* Visual placeholder */}

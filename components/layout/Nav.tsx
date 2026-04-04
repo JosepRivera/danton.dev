@@ -110,26 +110,30 @@ export function Nav() {
           })}
         </ul>
 
-        {/* Desktop CTA */}
-        <a
-          href="/cv.pdf"
-          download
-          className="hidden md:inline-flex items-center gap-1.5 rounded-lg border border-storm-accent/40 bg-storm-accent/10 px-3.5 py-2 text-sm font-medium text-storm-accent hover:bg-storm-accent/20 transition-colors duration-150"
-        >
-          <Download className="size-3.5" />
-          Descargar CV
-        </a>
+        {/* Right side controls */}
+        <div className="flex items-center gap-2">
+          {/* CV button — always visible */}
+          <a
+            href="/cv.pdf"
+            download
+            className="inline-flex items-center gap-1.5 rounded-lg border border-storm-accent/40 bg-storm-accent/10 px-3.5 py-2 text-sm font-medium text-storm-accent hover:bg-storm-accent/20 transition-colors duration-150"
+          >
+            <Download className="size-3.5" />
+            <span className="hidden sm:inline">Descargar CV</span>
+            <span className="sm:hidden">CV</span>
+          </a>
 
-        {/* Mobile menu button */}
-        <button
-          type="button"
-          onClick={() => setMenuOpen((v) => !v)}
-          className="md:hidden flex items-center justify-center rounded-lg p-2 text-storm-fg2 hover:text-storm-fg hover:bg-storm-bg3 transition-colors"
-          aria-expanded={menuOpen}
-          aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
-        >
-          {menuOpen ? <X className="size-5" /> : <Menu className="size-5" />}
-        </button>
+          {/* Mobile menu button */}
+          <button
+            type="button"
+            onClick={() => setMenuOpen((v) => !v)}
+            className="md:hidden flex items-center justify-center rounded-lg p-2 text-storm-fg2 hover:text-storm-fg hover:bg-storm-bg3 transition-colors"
+            aria-expanded={menuOpen}
+            aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+          >
+            {menuOpen ? <X className="size-5" /> : <Menu className="size-5" />}
+          </button>
+        </div>
       </nav>
 
       {/* Mobile menu — CSS transition, no JS library needed */}
@@ -159,17 +163,6 @@ export function Nav() {
               </li>
             );
           })}
-          <li className="pt-2 mt-1 border-t border-storm-border">
-            <a
-              href="/cv.pdf"
-              download
-              onClick={handleLinkClick}
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-storm-accent hover:text-storm-accent2 transition-colors"
-            >
-              <Download className="size-3.5" />
-              Descargar CV
-            </a>
-          </li>
         </ul>
       </div>
     </header>

@@ -131,7 +131,7 @@ export function Hero() {
 
           {/* Social links + availability */}
           <div
-            className="animate-fade-up flex flex-wrap items-center gap-3"
+            className="animate-fade-up flex flex-wrap items-center justify-center md:justify-start gap-3"
             style={{ animationDelay: "450ms" }}
           >
             <a
@@ -160,42 +160,44 @@ export function Hero() {
         </div>
 
         {/* Profile photo */}
-        <div className="animate-fade-scale relative shrink-0" style={{ animationDelay: "300ms" }}>
-          {/* Decorative rings */}
-          <div
-            className="absolute -inset-3 rounded-full border border-storm-accent/10"
-            aria-hidden="true"
-          />
-          <div
-            className="absolute -inset-6 rounded-full border border-storm-accent/5"
-            aria-hidden="true"
-          />
-
-          <div className="relative size-52 sm:size-60 md:size-68">
-            <div className="absolute inset-0 rounded-full bg-storm-accent/10 ring-2 ring-storm-accent/20" />
-            <Image
-              src="/images/profile.jpg"
-              alt="Foto de perfil de Josep Rivera"
-              fill
-              className="rounded-full object-cover"
-              priority
-              sizes="(max-width: 768px) 208px, 272px"
+        <div className="animate-float">
+          <div className="animate-fade-scale relative shrink-0" style={{ animationDelay: "300ms" }}>
+            {/* Decorative rings */}
+            <div
+              className="absolute -inset-3 rounded-full border border-storm-accent/10"
+              aria-hidden="true"
             />
-          </div>
+            <div
+              className="absolute -inset-6 rounded-full border border-storm-accent/5"
+              aria-hidden="true"
+            />
 
-          {/* Glow */}
-          <div
-            className="absolute inset-0 rounded-full blur-3xl bg-storm-accent/8 -z-10"
-            aria-hidden="true"
-          />
+            <div className="relative size-52 sm:size-60 md:size-68">
+              <div className="absolute inset-0 rounded-full bg-storm-accent/10 ring-2 ring-storm-accent/20" />
+              <Image
+                src="/images/profile.jpg"
+                alt="Foto de perfil de Josep Rivera"
+                fill
+                className="rounded-full object-cover"
+                priority
+                sizes="(max-width: 768px) 208px, 272px"
+              />
+            </div>
 
-          {/* Floating badge */}
-          <div
-            className="absolute -bottom-2 -right-2 md:-right-4 flex items-center gap-1.5 rounded-full border border-storm-border bg-storm-bg2/90 backdrop-blur-sm px-3 py-1.5 text-xs font-medium text-storm-fg2 shadow-lg"
-            aria-hidden="true"
-          >
-            <span className="size-2 rounded-full bg-storm-accent" />
-            Backend Dev
+            {/* Glow */}
+            <div
+              className="absolute inset-0 rounded-full blur-3xl bg-storm-accent/8 -z-10"
+              aria-hidden="true"
+            />
+
+            {/* Floating badge */}
+            <div
+              className="absolute -bottom-2 -right-2 md:-right-4 flex items-center gap-1.5 rounded-full border border-storm-border bg-storm-bg2/90 backdrop-blur-sm px-3 py-1.5 text-xs font-medium text-storm-fg2 shadow-lg"
+              aria-hidden="true"
+            >
+              <span className="size-2 rounded-full bg-storm-accent animate-pulse" />
+              Backend Dev
+            </div>
           </div>
         </div>
       </div>

@@ -14,7 +14,7 @@ const syne = Syne({
 });
 
 export const metadata: Metadata = {
-  title: "Josep Rivera — Backend Developer · NestJS · FastAPI · Lima",
+  title: "Josep Rivera — Backend Developer",
   description:
     "Backend developer con experiencia en NestJS, FastAPI, Python y Docker. Construyo APIs escalables, integro IA generativa en flujos reales y entrego sistemas que otros pueden mantener. Disponible para proyectos y prácticas.",
   keywords: [
@@ -36,7 +36,10 @@ export const metadata: Metadata = {
     "Josep Rivera",
   ],
   authors: [{ name: "Josep Danton Rivera Munarez" }],
-  metadataBase: new URL("https://rivera.dev"),
+  metadataBase: new URL("https://rivera-dev.vercel.app"),
+  icons: {
+    icon: [{ url: "/favicon.ico", sizes: "any" }],
+  },
   openGraph: {
     title: "Josep Rivera — Backend Developer",
     description:
@@ -44,15 +47,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_PE",
     siteName: "Josep Rivera Portfolio",
-    url: "https://rivera.dev",
-    images: [
-      {
-        url: "/images/profile.jpg",
-        width: 400,
-        height: 400,
-        alt: "Josep Rivera — Backend Developer",
-      },
-    ],
+    url: "https://rivera-dev.vercel.app",
   },
   twitter: {
     card: "summary_large_image",
@@ -60,7 +55,6 @@ export const metadata: Metadata = {
     description:
       "Backend developer en NestJS, FastAPI y Docker. APIs escalables + IA en flujos reales. Lima, Perú.",
     creator: "@JosepRivera",
-    images: ["/images/profile.jpg"],
   },
   robots: {
     index: true,
@@ -79,8 +73,8 @@ const jsonLd = {
   givenName: "Josep",
   familyName: "Rivera",
   jobTitle: "Backend Developer",
-  url: "https://rivera.dev",
-  image: "https://rivera.dev/images/profile.jpg",
+  url: "https://rivera-dev.vercel.app",
+  image: "https://rivera-dev.vercel.app/images/profile.jpg",
   email: "josepdanton1518@gmail.com",
   sameAs: ["https://github.com/JosepRivera", "https://www.linkedin.com/in/rivera-josep"],
   knowsAbout: [
@@ -116,7 +110,7 @@ export default function RootLayout({
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="canonical" href="https://rivera.dev" />
+        <link rel="canonical" href="https://rivera-dev.vercel.app" />
         <meta name="theme-color" content="#0e1018" />
         <script
           type="application/ld+json"

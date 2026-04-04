@@ -9,7 +9,7 @@ export function Skills() {
   const { ref, inView } = useInView(0.05);
 
   return (
-    <section id="skills" className="px-6 py-24" aria-label="Skills" ref={ref}>
+    <section id="skills" className="px-6 py-24 select-none" aria-label="Skills" ref={ref}>
       <div className="mx-auto max-w-5xl">
         <div
           className={`transition-all duration-500 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}

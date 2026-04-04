@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rivera.dev/sitemap.xml
+Sitemap: https://rivera-dev.vercel.app/sitemap.xml

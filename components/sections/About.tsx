@@ -1,6 +1,7 @@
 "use client";
 
 import { BookOpen, Globe, MessageSquare, Target, Zap } from "lucide-react";
+import type { ElementType, RefCallback } from "react";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { useInView } from "@/lib/use-in-view";
 
@@ -34,6 +35,30 @@ const languages = [
 
 function fadeClass(inView: boolean) {
   return `transition-all duration-500 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`;
+}
+
+interface WorkCardProps {
+  icon: ElementType;
+  title: string;
+  desc: string;
+  index: number;
+}
+
+function WorkCard({ icon: Icon, title, desc, index }: WorkCardProps) {
+  const { ref, inView } = useInView(0.2);
+  return (
+    <div
+      ref={ref as RefCallback<HTMLDivElement>}
+      className={`flex gap-3 rounded-xl border border-storm-border bg-storm-bg2 p-4 hover:border-storm-accent/30 transition-all duration-500 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
+      style={{ transitionDelay: inView ? `${index * 80}ms` : "0ms" }}
+    >
+      <Icon className="mt-0.5 size-4 shrink-0 text-storm-accent" aria-hidden="true" />
+      <div className="flex flex-col gap-0.5">
+        <span className="text-sm font-medium text-storm-fg">{title}</span>
+        <span className="text-xs text-storm-fg2 leading-relaxed">{desc}</span>
+      </div>
+    </div>
+  );
 }
 
 export function About() {
@@ -110,20 +135,13 @@ export function About() {
             </p>
 
             {softSkills.map((skill, i) => (
-              <div
+              <WorkCard
                 key={skill.title}
-                className={`flex gap-3 rounded-xl border border-storm-border bg-storm-bg2 p-4 hover:border-storm-accent/30 transition-colors duration-200 ${fadeClass(inView)}`}
-                style={{ transitionDelay: inView ? `${200 + i * 80}ms` : "0ms" }}
-              >
-                <skill.icon
-                  className="mt-0.5 size-4 shrink-0 text-storm-accent"
-                  aria-hidden="true"
-                />
-                <div className="flex flex-col gap-0.5">
-                  <span className="text-sm font-medium text-storm-fg">{skill.title}</span>
-                  <span className="text-xs text-storm-fg2 leading-relaxed">{skill.desc}</span>
-                </div>
-              </div>
+                icon={skill.icon}
+                title={skill.title}
+                desc={skill.desc}
+                index={i}
+              />
             ))}
           </div>
         </div>
