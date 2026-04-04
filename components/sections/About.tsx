@@ -1,8 +1,8 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
 import { BookOpen, Globe, MessageSquare, Target, Zap } from "lucide-react";
 import { SectionTitle } from "@/components/ui/SectionTitle";
+import { useInView } from "@/lib/use-in-view";
 
 const softSkills = [
   {
@@ -32,55 +32,52 @@ const languages = [
   { name: "Inglés", level: "A2 · En progreso" },
 ];
 
-export function About() {
-  const shouldReduce = useReducedMotion();
+function fadeClass(inView: boolean) {
+  return `transition-all duration-500 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`;
+}
 
-  const fadeUp = (delay = 0) => ({
-    hidden: shouldReduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, delay, ease: "easeOut" as const },
-    },
-  });
+export function About() {
+  const { ref, inView } = useInView(0.05);
 
   return (
-    <section id="sobre-mi" className="px-6 py-24" aria-label="Sobre mí">
+    <section id="sobre-mi" className="px-6 py-24" aria-label="Sobre mí" ref={ref}>
       <div className="mx-auto max-w-5xl">
-        <motion.div
-          variants={fadeUp(0)}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-        >
+        <div className={fadeClass(inView)}>
           <SectionTitle title="Sobre mí" />
-        </motion.div>
+        </div>
 
         <div className="grid gap-12 md:grid-cols-2 md:gap-16">
           {/* Bio */}
-          <motion.div
-            variants={fadeUp(0.1)}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            className="flex flex-col gap-5"
+          <div
+            className={`flex flex-col gap-5 ${fadeClass(inView)}`}
+            style={{ transitionDelay: inView ? "100ms" : "0ms" }}
           >
             <p className="text-storm-fg2 leading-relaxed">
-              Estoy en el último año de Diseño y Desarrollo de Software en Tecsup, Lima. Desde el
-              primer año me incliné hacia el backend: las APIs bien diseñadas, los sistemas que
-              escalan y el código que otros puedan mantener me resultan más interesantes que
-              cualquier otra cosa.
+              Estoy en el último año de{" "}
+              <span className="text-storm-accent font-medium">Diseño y Desarrollo de Software</span>{" "}
+              en <span className="text-storm-accent font-medium">Tecsup</span>, Lima. Desde el
+              primer año me incliné hacia el{" "}
+              <span className="text-storm-accent font-medium">backend</span>: las{" "}
+              <span className="text-storm-accent font-medium">APIs bien diseñadas</span>, los
+              sistemas que escalan y el código que otros puedan mantener me resultan más
+              interesantes que cualquier otra cosa.
             </p>
             <p className="text-storm-fg2 leading-relaxed">
-              Trabajo principalmente con <span className="text-storm-fg font-medium">NestJS</span>,{" "}
-              <span className="text-storm-fg font-medium">FastAPI</span> y{" "}
-              <span className="text-storm-fg font-medium">Docker</span>. He llevado proyectos desde
-              el modelo de datos hasta el deploy, e integrado IA generativa en flujos reales que
-              resolvieron problemas concretos de usuarios reales.
+              Trabajo principalmente con{" "}
+              <span className="text-storm-accent font-medium">NestJS</span>,{" "}
+              <span className="text-storm-accent font-medium">FastAPI</span> y{" "}
+              <span className="text-storm-accent font-medium">Docker</span>. He llevado proyectos
+              desde el modelo de datos hasta el{" "}
+              <span className="text-storm-accent font-medium">deploy</span>, e integrado{" "}
+              <span className="text-storm-accent font-medium">IA generativa</span> en flujos reales
+              que resolvieron problemas concretos de usuarios reales.
             </p>
             <p className="text-storm-fg2 leading-relaxed">
-              No me interesa escribir código por escribir. Me interesa que el sistema funcione, que
-              sea legible para el siguiente desarrollador y que resuelva algo real.
+              No me interesa escribir código por escribir. Me interesa que el sistema{" "}
+              <span className="text-storm-accent font-medium">funcione</span>, que sea{" "}
+              <span className="text-storm-accent font-medium">legible</span> para el siguiente
+              desarrollador y que{" "}
+              <span className="text-storm-accent font-medium">resuelva algo real</span>.
             </p>
 
             {/* Languages */}
@@ -101,28 +98,22 @@ export function About() {
                 ))}
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Soft skills */}
           <div className="flex flex-col gap-4">
-            <motion.p
-              variants={fadeUp(0.15)}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.1 }}
-              className="text-xs font-semibold uppercase tracking-wider text-storm-fg2"
+            <p
+              className={`text-xs font-semibold uppercase tracking-wider text-storm-fg2 ${fadeClass(inView)}`}
+              style={{ transitionDelay: inView ? "150ms" : "0ms" }}
             >
               Cómo trabajo
-            </motion.p>
+            </p>
 
             {softSkills.map((skill, i) => (
-              <motion.div
+              <div
                 key={skill.title}
-                variants={fadeUp(0.2 + i * 0.08)}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.1 }}
-                className="flex gap-3 rounded-xl border border-storm-border bg-storm-bg2 p-4 hover:border-storm-accent/30 transition-colors duration-200"
+                className={`flex gap-3 rounded-xl border border-storm-border bg-storm-bg2 p-4 hover:border-storm-accent/30 transition-colors duration-200 ${fadeClass(inView)}`}
+                style={{ transitionDelay: inView ? `${200 + i * 80}ms` : "0ms" }}
               >
                 <skill.icon
                   className="mt-0.5 size-4 shrink-0 text-storm-accent"
@@ -132,7 +123,7 @@ export function About() {
                   <span className="text-sm font-medium text-storm-fg">{skill.title}</span>
                   <span className="text-xs text-storm-fg2 leading-relaxed">{skill.desc}</span>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

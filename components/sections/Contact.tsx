@@ -1,8 +1,8 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, Download, Mail } from "lucide-react";
 import type { ElementType } from "react";
+import { useInView } from "@/lib/use-in-view";
 
 function GithubIcon({ className }: { className?: string }) {
   return (
@@ -74,42 +74,23 @@ const contactLinks: {
 ];
 
 export function Contact() {
-  const shouldReduce = useReducedMotion();
-
-  const itemVariant = (i: number) => ({
-    hidden: shouldReduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, delay: i * 0.1, ease: "easeOut" as const },
-    },
-  });
-
-  const containerVariant = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
+  const { ref, inView } = useInView(0.05);
 
   return (
-    <section id="contacto" className="px-6 py-24 relative overflow-hidden" aria-label="Contacto">
+    <section
+      id="contacto"
+      className="px-6 py-24 relative overflow-hidden"
+      aria-label="Contacto"
+      ref={ref}
+    >
       {/* Fondo sutil decorativo */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden -z-10">
         <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-storm-accent/5 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2" />
       </div>
 
       <div className="mx-auto max-w-5xl">
-        <motion.div
-          variants={itemVariant(0)}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          className="text-center max-w-2xl mx-auto mb-16"
+        <div
+          className={`text-center max-w-2xl mx-auto mb-16 transition-all duration-500 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
         >
           <h2 className="text-4xl sm:text-5xl font-bold text-storm-fg tracking-tight mb-4">
             ¿Trabajamos juntos?
@@ -121,25 +102,19 @@ export function Contact() {
             <span className="text-storm-accent font-semibold">conversaciones interesantes</span> que
             impulsen tecnología con propósito.
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          variants={containerVariant}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 mb-12"
-        >
-          {contactLinks.map((link) => {
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 mb-12">
+          {contactLinks.map((link, i) => {
             const Icon = link.icon;
             return (
-              <motion.a
+              <a
                 key={link.label}
-                variants={itemVariant(0)}
                 href={link.href}
                 target={link.label !== "Email" ? "_blank" : undefined}
                 rel={link.label !== "Email" ? "noopener noreferrer" : undefined}
-                className="group relative p-6 rounded-2xl border border-storm-border bg-gradient-to-br from-storm-bg2 to-storm-bg overflow-hidden hover:border-storm-accent/50 transition-all duration-300 hover:-translate-y-1"
+                className={`group relative p-6 rounded-2xl border border-storm-border bg-gradient-to-br from-storm-bg2 to-storm-bg overflow-hidden hover:border-storm-accent/50 hover:-translate-y-1 transition-all duration-300 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
+                style={{ transitionDelay: inView ? `${100 + i * 100}ms` : "0ms" }}
                 aria-label={`Contactar por ${link.label}`}
               >
                 {/* Fondo decorativo */}
@@ -173,27 +148,24 @@ export function Contact() {
                     </p>
                   </div>
                 </div>
-              </motion.a>
+              </a>
             );
           })}
-        </motion.div>
+        </div>
 
-        <motion.div
-          variants={itemVariant(4)}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          className="flex justify-center"
+        <div
+          className={`flex justify-center transition-all duration-500 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
+          style={{ transitionDelay: inView ? "400ms" : "0ms" }}
         >
           <a
             href="/cv.pdf"
             download
-            className="group relative px-6 py-3 rounded-xl border border-storm-accent/30 bg-storm-accent/5 text-storm-fg font-medium hover:bg-storm-accent/10 hover:border-storm-accent/50 transition-all duration-200 hover:-translate-y-0.5 flex items-center gap-2 justify-center w-full sm:w-auto"
+            className="group relative px-6 py-3 rounded-xl border border-storm-accent/30 bg-storm-accent/5 text-storm-fg font-medium hover:bg-storm-accent/10 hover:border-storm-accent/60 transition-all duration-200 hover:-translate-y-0.5 flex items-center gap-2 justify-center w-full sm:w-auto shadow-[0_0_20px_-8px_rgba(104,136,200,0.3)] hover:shadow-[0_0_28px_-4px_rgba(104,136,200,0.4)]"
           >
-            <Download className="size-4 group-hover:translate-y-0.5 transition-transform duration-200" />
+            <Download className="size-4" />
             Descargar CV
           </a>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -1,8 +1,8 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
-import type { Project } from "@/data/projects";
+import { ExternalLink, Globe, Smartphone } from "lucide-react";
+import type { Project, ProjectVersion } from "@/data/projects";
+import { useInView } from "@/lib/use-in-view";
 import { cn } from "@/lib/utils";
 
 function GithubIcon({ className }: { className?: string }) {
@@ -29,6 +29,70 @@ const badgeStyles = {
   wip: "bg-storm-accent/10 text-storm-accent border border-storm-accent/20",
   internship: "bg-amber-500/10 text-amber-400 border border-amber-500/20",
 };
+
+/** Tech-specific deploy button styles */
+const techButtonActive: Record<string, string> = {
+  Flutter:
+    "border-[#54C5F8]/40 bg-[#54C5F8]/10 text-[#54C5F8] hover:bg-[#54C5F8]/20 hover:border-[#54C5F8]/60",
+  React:
+    "border-[#61DAFB]/40 bg-[#61DAFB]/10 text-[#61DAFB] hover:bg-[#61DAFB]/20 hover:border-[#61DAFB]/60",
+  "Next.js":
+    "border-slate-400/40 bg-slate-400/10 text-slate-300 hover:bg-slate-400/20 hover:border-slate-400/60",
+};
+
+const techButtonDisabled: Record<string, string> = {
+  Flutter: "border-[#54C5F8]/20 bg-[#54C5F8]/5 text-[#54C5F8]/45",
+  React: "border-[#61DAFB]/20 bg-[#61DAFB]/5 text-[#61DAFB]/45",
+  "Next.js": "border-slate-500/20 bg-slate-500/5 text-slate-500/60",
+};
+
+interface VersionButtonProps {
+  version: ProjectVersion;
+  size?: "sm" | "xs";
+}
+
+function VersionButton({ version, size = "sm" }: VersionButtonProps) {
+  const isActive = version.status === "done" && !!version.deployedUrl;
+  const Icon = version.label === "Mobile" ? Smartphone : Globe;
+  const px = size === "xs" ? "px-3 py-1.5 text-xs" : "px-3 py-1.5 text-sm";
+  const iconSize = size === "xs" ? "size-3" : "size-3.5";
+
+  if (isActive) {
+    return (
+      <a
+        href={version.deployedUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={cn(
+          "inline-flex items-center gap-1.5 rounded-md border font-medium transition-all duration-150",
+          px,
+          techButtonActive[version.tech] ??
+            "border-storm-accent/40 bg-storm-accent/10 text-storm-accent hover:bg-storm-accent/20",
+        )}
+        aria-label={`Ver ${version.label} (${version.tech}) de este proyecto`}
+      >
+        <Icon className={iconSize} />
+        {version.label} · {version.tech}
+        <ExternalLink className="size-3 opacity-60" />
+      </a>
+    );
+  }
+
+  return (
+    <span
+      className={cn(
+        "inline-flex items-center gap-1.5 rounded-md border font-medium cursor-not-allowed",
+        px,
+        techButtonDisabled[version.tech] ??
+          "border-storm-border/50 bg-storm-bg3/40 text-storm-fg2/50",
+      )}
+      title="Próximamente"
+    >
+      <Icon className={iconSize} />
+      {version.label} · {version.tech}
+    </span>
+  );
+}
 
 interface ProjectCardProps {
   project: Project;
@@ -101,25 +165,17 @@ function ProjectVisual({ project }: { project: Project }) {
 }
 
 export function ProjectCard({ project, index }: ProjectCardProps) {
-  const shouldReduce = useReducedMotion();
+  const { ref, inView } = useInView(0.1);
 
-  const cardVariants = {
-    hidden: shouldReduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, delay: index * 0.15, ease: "easeOut" as const },
-    },
-  };
+  const animClass = inView ? "animate-fade-up" : "opacity-0";
+  const delay = { animationDelay: `${index * 150}ms` };
 
   if (project.featured) {
     return (
-      <motion.article
-        variants={cardVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.1 }}
-        className="col-span-full rounded-2xl border border-storm-border bg-storm-bg2 overflow-hidden hover:border-storm-accent/30 transition-colors duration-200 group"
+      <article
+        ref={ref}
+        className={`col-span-full rounded-2xl border border-storm-border bg-storm-bg2 overflow-hidden hover:border-storm-accent/30 transition-[border-color] duration-200 group ${animClass}`}
+        style={delay}
       >
         <div className="grid md:grid-cols-5">
           {/* Visual area */}
@@ -153,7 +209,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             </p>
             <p className="text-sm text-storm-fg2 leading-relaxed">{project.detail}</p>
 
-            <div className="flex flex-wrap gap-2 mt-auto pt-2">
+            <div className="flex flex-wrap gap-2 pt-2">
               {project.stack.map((tech) => (
                 <span
                   key={tech}
@@ -164,35 +220,36 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               ))}
             </div>
 
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm text-storm-fg2 hover:text-storm-accent transition-colors duration-150 w-fit mt-1"
-              aria-label={`Ver código de ${project.title} en GitHub`}
-            >
-              <GithubIcon className="size-4" />
-              Ver en GitHub
-              <ExternalLink className="size-3 opacity-60" />
-            </a>
+            <div className="flex flex-wrap items-center gap-3 mt-1">
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-md border border-storm-border bg-storm-bg3 px-3 py-1.5 text-sm font-medium text-storm-fg hover:bg-[#24292e] hover:border-[#444d56] hover:text-white transition-all duration-150"
+                aria-label={`Ver código de ${project.title} en GitHub`}
+              >
+                <GithubIcon className="size-4" />
+                Ver en GitHub
+                <ExternalLink className="size-3 opacity-60" />
+              </a>
+              {project.versions?.map((v) => (
+                <VersionButton key={`${v.label}-${v.tech}`} version={v} size="sm" />
+              ))}
+            </div>
           </div>
         </div>
-      </motion.article>
+      </article>
     );
   }
 
   return (
-    <motion.article
-      variants={cardVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.1 }}
-      whileHover={shouldReduce ? {} : { y: -4 }}
-      transition={{ duration: 0.2 }}
-      className="group flex flex-col rounded-xl border border-storm-border bg-storm-bg2 overflow-hidden hover:border-storm-accent/30 transition-colors duration-200"
+    <article
+      ref={ref}
+      className={`group flex flex-col rounded-xl border border-storm-border bg-storm-bg2 overflow-hidden hover:border-storm-accent/30 hover:-translate-y-1 transition-[border-color,transform] duration-150 ${animClass}`}
+      style={delay}
     >
       {/* Visual placeholder */}
-      <div className="h-36 w-full">
+      <div className="h-52 w-full">
         <ProjectVisual project={project} />
       </div>
 
@@ -215,7 +272,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         <p className="text-sm text-storm-fg2 leading-relaxed">{project.description}</p>
         <p className="text-xs text-storm-fg2 leading-relaxed opacity-80">{project.detail}</p>
 
-        <div className="flex flex-wrap gap-1.5 mt-auto pt-1">
+        <div className="flex flex-wrap gap-1.5 pt-1">
           {project.stack.map((tech) => (
             <span
               key={tech}
@@ -226,18 +283,23 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           ))}
         </div>
 
-        <a
-          href={project.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-sm text-storm-fg2 hover:text-storm-accent transition-colors duration-150 w-fit mt-1"
-          aria-label={`Ver código de ${project.title} en GitHub`}
-        >
-          <GithubIcon className="size-4" />
-          Ver en GitHub
-          <ExternalLink className="size-3 opacity-60" />
-        </a>
+        <div className="flex flex-wrap items-center gap-2 mt-auto pt-2">
+          <a
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-md border border-storm-border bg-storm-bg3 px-3 py-1.5 text-xs font-medium text-storm-fg hover:bg-[#24292e] hover:border-[#444d56] hover:text-white transition-all duration-150"
+            aria-label={`Ver código de ${project.title} en GitHub`}
+          >
+            <GithubIcon className="size-3.5" />
+            Ver en GitHub
+            <ExternalLink className="size-3 opacity-60" />
+          </a>
+          {project.versions?.map((v) => (
+            <VersionButton key={`${v.label}-${v.tech}`} version={v} size="xs" />
+          ))}
+        </div>
       </div>
-    </motion.article>
+    </article>
   );
 }

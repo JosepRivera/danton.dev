@@ -14,9 +14,9 @@ const syne = Syne({
 });
 
 export const metadata: Metadata = {
-  title: "Josep Rivera — Backend Developer | NestJS | TypeScript | Lima",
+  title: "Josep Rivera — Backend Developer · NestJS · FastAPI · Lima",
   description:
-    "Backend developer especializado en NestJS, FastAPI, Python y Docker. Construyo APIs escalables e integro IA en proyectos reales. Estudiante de Diseño y Desarrollo de Software en Tecsup.",
+    "Backend developer con experiencia en NestJS, FastAPI, Python y Docker. Construyo APIs escalables, integro IA generativa en flujos reales y entrego sistemas que otros pueden mantener. Disponible para proyectos y prácticas.",
   keywords: [
     "backend developer",
     "NestJS",
@@ -28,27 +28,39 @@ export const metadata: Metadata = {
     "APIs REST",
     "desarrollador backend",
     "Peru",
+    "Lima",
     "Tecsup",
-    "microservicios",
-    "IA",
+    "PostgreSQL",
+    "inteligencia artificial",
+    "Flutter",
+    "Josep Rivera",
   ],
   authors: [{ name: "Josep Danton Rivera Munarez" }],
   metadataBase: new URL("https://rivera.dev"),
   openGraph: {
     title: "Josep Rivera — Backend Developer",
     description:
-      "Backend developer especializado en NestJS, FastAPI, Python y Docker. Construyo APIs escalables e integro IA en proyectos reales.",
+      "Backend developer con experiencia en NestJS, FastAPI y Docker. Construyo APIs escalables e integro IA en proyectos reales. Lima, Perú.",
     type: "website",
     locale: "es_PE",
     siteName: "Josep Rivera Portfolio",
     url: "https://rivera.dev",
+    images: [
+      {
+        url: "/images/profile.jpg",
+        width: 400,
+        height: 400,
+        alt: "Josep Rivera — Backend Developer",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Josep Rivera — Backend Developer",
     description:
-      "Backend developer especializado en NestJS, FastAPI, Python y Docker. Construyo APIs escalables.",
+      "Backend developer en NestJS, FastAPI y Docker. APIs escalables + IA en flujos reales. Lima, Perú.",
     creator: "@JosepRivera",
+    images: ["/images/profile.jpg"],
   },
   robots: {
     index: true,
@@ -58,6 +70,40 @@ export const metadata: Metadata = {
     "max-video-preview": -1,
   },
   category: "Technology",
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Josep Rivera",
+  givenName: "Josep",
+  familyName: "Rivera",
+  jobTitle: "Backend Developer",
+  url: "https://rivera.dev",
+  image: "https://rivera.dev/images/profile.jpg",
+  email: "josepdanton1518@gmail.com",
+  sameAs: ["https://github.com/JosepRivera", "https://www.linkedin.com/in/rivera-josep"],
+  knowsAbout: [
+    "NestJS",
+    "FastAPI",
+    "Python",
+    "TypeScript",
+    "Docker",
+    "PostgreSQL",
+    "APIs REST",
+    "Inteligencia Artificial",
+    "Flutter",
+  ],
+  alumniOf: {
+    "@type": "EducationalOrganization",
+    name: "Tecsup",
+    url: "https://www.tecsup.edu.pe",
+  },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Lima",
+    addressCountry: "PE",
+  },
 };
 
 export default function RootLayout({
@@ -72,6 +118,11 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href="https://rivera.dev" />
         <meta name="theme-color" content="#0e1018" />
+        <script
+          type="application/ld+json"
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: structured data is static, no user input
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

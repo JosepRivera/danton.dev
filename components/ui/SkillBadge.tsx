@@ -1,42 +1,67 @@
 "use client";
 
 import {
+  AmazonwebservicesPlainWordmark,
+  AzureOriginal,
+  BiomeOriginal,
   DartOriginal,
+  DjangoPlain,
   DockerOriginal,
   ExpressOriginal,
   FastapiOriginal,
+  FlutterOriginal,
   GitOriginal,
   JavaOriginal,
+  JestPlain,
   KotlinOriginal,
+  LaravelOriginal,
   MongodbOriginal,
+  MysqlOriginal,
   NestjsOriginal,
+  NextjsOriginal,
   NodejsOriginal,
+  PhpOriginal,
+  PnpmOriginal,
   PostgresqlOriginal,
   PrismaOriginal,
   PythonOriginal,
+  ReactOriginal,
+  SpringOriginal,
   SqliteOriginal,
   SwaggerOriginal,
+  SwiftOriginal,
+  TailwindcssOriginal,
   TypescriptOriginal,
+  VitejsOriginal,
+  VitestOriginal,
 } from "devicons-react";
-import { motion, useReducedMotion } from "framer-motion";
 import type { FC } from "react";
+import { useInView } from "@/lib/use-in-view";
 import { cn } from "@/lib/utils";
 
+/** Zod official-style SVG icon */
 function ZodIcon({ size = 18 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
-        d="M12 2.5L4 6.5V12c0 4.5 3.5 8.7 8 9.5 4.5-.8 8-5 8-9.5V6.5L12 2.5z"
+        d="M12 2L3 7v5c0 5.25 3.9 10.15 9 11.35C17.1 22.15 21 17.25 21 12V7L12 2z"
         fill="#3b82f6"
-        fillOpacity="0.15"
+        fillOpacity="0.2"
         stroke="#6888c8"
         strokeWidth="1.5"
         strokeLinejoin="round"
       />
       <path
-        d="M8.5 9.5h7L9.5 14.5H16"
+        d="M8.5 9.5h7l-6.5 5h7"
         stroke="#93c5fd"
-        strokeWidth="1.8"
+        strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
@@ -44,13 +69,35 @@ function ZodIcon({ size = 18 }: { size?: number }) {
   );
 }
 
+/** Express needs a light wrapper since its icon is black */
 function ExpressWrapper({ size = 18 }: { size?: number }) {
   return (
     <span
-      className="inline-flex items-center justify-center rounded-sm bg-white/10"
-      style={{ width: size, height: size }}
+      className="inline-flex items-center justify-center rounded-sm"
+      style={{
+        width: size,
+        height: size,
+        filter: "invert(1) opacity(0.7)",
+      }}
     >
-      <ExpressOriginal size={Math.round(size * 0.78)} />
+      <ExpressOriginal size={size} />
+    </span>
+  );
+}
+
+/** AWS plain wordmark — visible on dark without extra background */
+function AwsWrapper({ size = 18 }: { size?: number }) {
+  return (
+    <span
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        filter: "brightness(0) invert(1) opacity(0.75)",
+        width: size,
+        height: size,
+      }}
+    >
+      <AmazonwebservicesPlainWordmark size={size} />
     </span>
   );
 }
@@ -75,6 +122,23 @@ const iconMap: Record<string, IconFC> = {
   git: GitOriginal as IconFC,
   zod: ZodIcon,
   swagger: SwaggerOriginal as IconFC,
+  flutter: FlutterOriginal as IconFC,
+  mysql: MysqlOriginal as IconFC,
+  php: PhpOriginal as IconFC,
+  laravel: LaravelOriginal as IconFC,
+  aws: AwsWrapper,
+  azure: AzureOriginal as IconFC,
+  spring: SpringOriginal as IconFC,
+  django: DjangoPlain as IconFC,
+  react: ReactOriginal as IconFC,
+  nextjs: NextjsOriginal as IconFC,
+  biome: BiomeOriginal as IconFC,
+  swift: SwiftOriginal as IconFC,
+  tailwind: TailwindcssOriginal as IconFC,
+  vite: VitejsOriginal as IconFC,
+  vitest: VitestOriginal as IconFC,
+  jest: JestPlain as IconFC,
+  pnpm: PnpmOriginal as IconFC,
 };
 
 interface SkillBadgeProps {
@@ -84,32 +148,18 @@ interface SkillBadgeProps {
 }
 
 export function SkillBadge({ name, iconKey, index }: SkillBadgeProps) {
-  const shouldReduce = useReducedMotion();
+  const { ref, inView } = useInView(0.1);
   const Icon = iconMap[iconKey];
 
-  const pillVariants = {
-    hidden: shouldReduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.3,
-        delay: index * 0.05,
-        ease: "easeOut" as const,
-      },
-    },
-  };
-
   return (
-    <motion.div
-      variants={pillVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.1 }}
+    <div
+      ref={ref}
       className={cn(
         "inline-flex items-center gap-2 rounded-lg border border-storm-border bg-storm-bg2 px-3 py-2",
         "hover:border-storm-accent/40 hover:bg-storm-bg3 transition-colors duration-150",
+        inView ? "animate-fade-up" : "opacity-0",
       )}
+      style={{ animationDelay: `${index * 40}ms` }}
     >
       {Icon ? (
         <Icon size={18} />
@@ -117,6 +167,6 @@ export function SkillBadge({ name, iconKey, index }: SkillBadgeProps) {
         <span className="size-4.5 rounded-sm bg-storm-bg3 border border-storm-border" />
       )}
       <span className="text-sm font-medium text-storm-fg2">{name}</span>
-    </motion.div>
+    </div>
   );
 }

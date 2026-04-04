@@ -1,6 +1,5 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Download, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
@@ -27,7 +26,6 @@ export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
-  const shouldReduce = useReducedMotion();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -66,10 +64,10 @@ export function Nav() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        "fixed top-0 left-0 right-0 z-50 transition-colors duration-300 border-b",
         scrolled
-          ? "bg-storm-bg2/80 backdrop-blur-md border-b border-storm-border"
-          : "bg-transparent",
+          ? "bg-storm-bg2/80 backdrop-blur-md border-storm-border"
+          : "bg-storm-bg/0 border-transparent",
       )}
     >
       <nav
@@ -99,18 +97,13 @@ export function Nav() {
                 <a
                   href={link.href}
                   className={cn(
-                    "relative px-3 py-1.5 text-sm rounded-md transition-colors duration-150",
-                    isActive ? "text-storm-fg" : "text-storm-fg2 hover:text-storm-fg",
+                    "px-3 py-1.5 text-sm rounded-md transition-colors duration-150 border",
+                    isActive
+                      ? "text-storm-fg bg-storm-bg3 border-storm-border"
+                      : "text-storm-fg2 border-transparent hover:text-storm-fg hover:bg-storm-bg3/50",
                   )}
                 >
-                  {isActive && (
-                    <motion.span
-                      layoutId="nav-pill"
-                      className="absolute inset-0 rounded-md bg-storm-bg3 border border-storm-border"
-                      transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
-                    />
-                  )}
-                  <span className="relative z-10">{link.label}</span>
+                  {link.label}
                 </a>
               </li>
             );
@@ -139,51 +132,46 @@ export function Nav() {
         </button>
       </nav>
 
-      {/* Mobile menu */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={shouldReduce ? { opacity: 1 } : { opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={shouldReduce ? { opacity: 1 } : { opacity: 0, y: -8 }}
-            transition={{ duration: 0.2 }}
-            className="md:hidden border-t border-storm-border bg-storm-bg2/95 backdrop-blur-md"
-          >
-            <ul className="flex flex-col px-6 py-4 gap-1">
-              {navLinks.map((link) => {
-                const isActive = activeSection === link.sectionId;
-                return (
-                  <li key={link.href}>
-                    <a
-                      href={link.href}
-                      onClick={handleLinkClick}
-                      className={cn(
-                        "block py-2.5 text-sm transition-colors",
-                        isActive
-                          ? "text-storm-accent font-medium"
-                          : "text-storm-fg2 hover:text-storm-accent",
-                      )}
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                );
-              })}
-              <li className="pt-2 mt-1 border-t border-storm-border">
+      {/* Mobile menu — CSS transition, no JS library needed */}
+      <div
+        className={cn(
+          "md:hidden border-storm-border bg-storm-bg2/95 backdrop-blur-md overflow-hidden transition-all duration-200",
+          menuOpen ? "max-h-96 opacity-100 border-t" : "max-h-0 opacity-0",
+        )}
+      >
+        <ul className="flex flex-col px-6 py-4 gap-1">
+          {navLinks.map((link) => {
+            const isActive = activeSection === link.sectionId;
+            return (
+              <li key={link.href}>
                 <a
-                  href="/cv.pdf"
-                  download
+                  href={link.href}
                   onClick={handleLinkClick}
-                  className="inline-flex items-center gap-1.5 text-sm font-medium text-storm-accent hover:text-storm-accent2 transition-colors"
+                  className={cn(
+                    "block py-2.5 text-sm transition-colors",
+                    isActive
+                      ? "text-storm-accent font-medium"
+                      : "text-storm-fg2 hover:text-storm-accent",
+                  )}
                 >
-                  <Download className="size-3.5" />
-                  Descargar CV
+                  {link.label}
                 </a>
               </li>
-            </ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            );
+          })}
+          <li className="pt-2 mt-1 border-t border-storm-border">
+            <a
+              href="/cv.pdf"
+              download
+              onClick={handleLinkClick}
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-storm-accent hover:text-storm-accent2 transition-colors"
+            >
+              <Download className="size-3.5" />
+              Descargar CV
+            </a>
+          </li>
+        </ul>
+      </div>
     </header>
   );
 }

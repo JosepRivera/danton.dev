@@ -1,52 +1,31 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { SkillBadge } from "@/components/ui/SkillBadge";
 import { skillCategories } from "@/data/skills";
+import { useInView } from "@/lib/use-in-view";
 
 export function Skills() {
-  const shouldReduce = useReducedMotion();
-
-  const titleVariant = {
-    hidden: shouldReduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: "easeOut" as const },
-    },
-  };
-
-  const categoryVariant = (i: number) => ({
-    hidden: shouldReduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.4, delay: i * 0.1, ease: "easeOut" as const },
-    },
-  });
+  const { ref, inView } = useInView(0.05);
 
   return (
-    <section id="skills" className="px-6 py-24" aria-label="Skills">
+    <section id="skills" className="px-6 py-24" aria-label="Skills" ref={ref}>
       <div className="mx-auto max-w-5xl">
-        <motion.div
-          variants={titleVariant}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
+        <div
+          className={`transition-all duration-500 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
         >
-          <SectionTitle title="Skills" subtitle="Las herramientas con las que trabajo." />
-        </motion.div>
+          <SectionTitle
+            title="Skills"
+            subtitle="Tecnologías que he usado a lo largo de mi carrera y proyectos."
+          />
+        </div>
 
         <div className="grid gap-10 sm:grid-cols-2">
           {skillCategories.map((cat, catIndex) => (
-            <motion.div
+            <div
               key={cat.category}
-              variants={categoryVariant(catIndex)}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.1 }}
-              className="flex flex-col gap-4"
+              className={`flex flex-col gap-4 transition-all duration-400 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+              style={{ transitionDelay: inView ? `${catIndex * 100}ms` : "0ms" }}
             >
               <h3 className="text-sm font-semibold uppercase tracking-wider text-storm-fg2">
                 {cat.category}
@@ -61,7 +40,7 @@ export function Skills() {
                   />
                 ))}
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

@@ -1,6 +1,3 @@
-"use client";
-
-import { motion, useReducedMotion } from "framer-motion";
 import { ArrowDown, Mail, MapPin } from "lucide-react";
 import Image from "next/image";
 
@@ -43,29 +40,9 @@ function LinkedinIcon({ className }: { className?: string }) {
   );
 }
 
-const techPills = ["NestJS", "FastAPI", "Docker", "PostgreSQL", "IA"];
+const techPills = ["NestJS", "FastAPI", "Flutter", "Docker", "PostgreSQL", "IA"];
 
 export function Hero() {
-  const shouldReduce = useReducedMotion();
-
-  const makeVariant = (delay: number) => ({
-    hidden: shouldReduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, delay, ease: "easeOut" as const },
-    },
-  });
-
-  const photoVariant = {
-    hidden: shouldReduce ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.7, delay: 0.3, ease: "easeOut" as const },
-    },
-  };
-
   return (
     <section
       id="hero"
@@ -76,12 +53,7 @@ export function Hero() {
         {/* Text content */}
         <div className="flex flex-col items-center gap-5 text-center md:items-start md:text-left md:max-w-lg">
           {/* Availability + location badge */}
-          <motion.div
-            variants={makeVariant(0)}
-            initial="hidden"
-            animate="visible"
-            className="flex flex-col items-center gap-3 md:items-start w-full"
-          >
+          <div className="animate-fade-up flex flex-wrap items-center gap-3 w-full">
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-storm-accent/10 to-transparent border border-storm-accent/30 rounded-lg px-4 py-2.5 backdrop-blur-sm">
               <span
                 className="size-2 rounded-full bg-storm-accent animate-pulse"
@@ -96,43 +68,35 @@ export function Hero() {
               <MapPin className="size-3.5 text-storm-accent" aria-hidden="true" />
               Lima, Perú
             </span>
-          </motion.div>
+          </div>
 
-          <motion.h1
-            variants={makeVariant(0.1)}
-            initial="hidden"
-            animate="visible"
-            className="text-5xl font-bold leading-tight tracking-tight text-storm-fg sm:text-6xl"
+          <h1
+            className="animate-fade-up text-5xl font-bold leading-tight tracking-tight text-storm-fg sm:text-6xl"
+            style={{ animationDelay: "100ms" }}
           >
             Josep Rivera
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            variants={makeVariant(0.2)}
-            initial="hidden"
-            animate="visible"
-            className="text-xl font-semibold text-storm-accent sm:text-2xl"
+          <p
+            className="animate-fade-up text-xl font-semibold text-storm-accent sm:text-2xl"
+            style={{ animationDelay: "200ms" }}
           >
             Backend Developer
-          </motion.p>
+          </p>
 
-          <motion.p
-            variants={makeVariant(0.3)}
-            initial="hidden"
-            animate="visible"
-            className="text-base text-storm-fg2 leading-relaxed max-w-md"
+          <p
+            className="animate-fade-up text-base text-storm-fg2 leading-relaxed max-w-md"
+            style={{ animationDelay: "300ms" }}
           >
             Estoy en el último año de Diseño y Desarrollo de Software en Tecsup. Construyo APIs que
             escalan, integro IA en flujos reales y le doy importancia al código que otros puedan
             mantener.
-          </motion.p>
+          </p>
 
           {/* Tech pills */}
-          <motion.div
-            variants={makeVariant(0.35)}
-            initial="hidden"
-            animate="visible"
-            className="flex flex-wrap items-center justify-center md:justify-start gap-2"
+          <div
+            className="animate-fade-up flex flex-wrap items-center justify-center md:justify-start gap-2"
+            style={{ animationDelay: "350ms" }}
           >
             {techPills.map((tech) => (
               <span
@@ -142,18 +106,16 @@ export function Hero() {
                 {tech}
               </span>
             ))}
-          </motion.div>
+          </div>
 
           {/* CTAs */}
-          <motion.div
-            variants={makeVariant(0.4)}
-            initial="hidden"
-            animate="visible"
-            className="flex flex-wrap items-center gap-3"
+          <div
+            className="animate-fade-up flex flex-wrap items-center gap-3"
+            style={{ animationDelay: "400ms" }}
           >
             <a
               href="#proyectos"
-              className="inline-flex items-center gap-2 rounded-lg bg-storm-accent px-5 py-2.5 text-sm font-semibold text-white hover:-translate-y-0.5 transition-transform duration-150 focus-visible:ring-2 focus-visible:ring-storm-accent focus-visible:outline-none"
+              className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-[#1a2d5c] to-[#2d4d9e] hover:from-[#1f3570] hover:to-[#3458b8] px-5 py-2.5 text-sm font-semibold text-white hover:-translate-y-0.5 transition-all duration-150 shadow-[0_0_20px_-6px_rgba(45,77,158,0.5)] hover:shadow-[0_0_24px_-4px_rgba(52,88,184,0.6)] focus-visible:ring-2 focus-visible:ring-[#3458b8] focus-visible:outline-none"
             >
               <ArrowDown className="size-4" />
               Ver proyectos
@@ -165,14 +127,12 @@ export function Hero() {
               <Mail className="size-4" />
               Contactar
             </a>
-          </motion.div>
+          </div>
 
-          {/* Social links */}
-          <motion.div
-            variants={makeVariant(0.45)}
-            initial="hidden"
-            animate="visible"
-            className="flex items-center gap-4"
+          {/* Social links + availability */}
+          <div
+            className="animate-fade-up flex flex-wrap items-center gap-3"
+            style={{ animationDelay: "450ms" }}
           >
             <a
               href="https://github.com/JosepRivera"
@@ -192,17 +152,16 @@ export function Hero() {
             >
               <LinkedinIcon className="size-5" />
             </a>
-          </motion.div>
+            <span className="h-4 w-px bg-storm-border" aria-hidden="true" />
+            <span className="text-xs text-storm-fg2">
+              Disponible para colaborar en proyectos y equipos de desarrollo
+            </span>
+          </div>
         </div>
 
         {/* Profile photo */}
-        <motion.div
-          variants={photoVariant}
-          initial="hidden"
-          animate="visible"
-          className="relative shrink-0"
-        >
-          {/* Decorative ring */}
+        <div className="animate-fade-scale relative shrink-0" style={{ animationDelay: "300ms" }}>
+          {/* Decorative rings */}
           <div
             className="absolute -inset-3 rounded-full border border-storm-accent/10"
             aria-hidden="true"
@@ -238,7 +197,7 @@ export function Hero() {
             <span className="size-2 rounded-full bg-storm-accent" />
             Backend Dev
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
