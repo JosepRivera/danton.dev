@@ -11,7 +11,7 @@ export function Experience() {
     <section id="experiencia" className="px-6 py-24" aria-label="Formación y experiencia" ref={ref}>
       <div className="mx-auto max-w-5xl">
         <div
-          className={`transition-all duration-500 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
+          className={`transition-all duration-300 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
         >
           <SectionTitle title="Formación & Experiencia" />
         </div>
@@ -19,7 +19,7 @@ export function Experience() {
         <div className="grid gap-8 md:grid-cols-2">
           {/* Educación */}
           <div
-            className={`flex flex-col gap-4 transition-all duration-500 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
+            className={`flex flex-col gap-4 transition-all duration-300 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
             style={{ transitionDelay: inView ? "100ms" : "0ms" }}
           >
             <div className="flex items-center gap-2.5 text-storm-fg2">
@@ -95,7 +95,7 @@ export function Experience() {
 
           {/* Experiencia */}
           <div
-            className={`flex flex-col gap-4 transition-all duration-500 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
+            className={`flex flex-col gap-4 transition-all duration-300 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
             style={{ transitionDelay: inView ? "200ms" : "0ms" }}
           >
             <div className="flex items-center gap-2.5 text-storm-fg2">

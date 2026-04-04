@@ -79,7 +79,7 @@ export function Contact() {
   return (
     <section
       id="contacto"
-      className="px-6 py-24 relative overflow-hidden"
+      className="px-6 py-24 relative"
       aria-label="Contacto"
       ref={ref}
     >
@@ -90,7 +90,7 @@ export function Contact() {
 
       <div className="mx-auto max-w-5xl">
         <div
-          className={`text-center max-w-2xl mx-auto mb-16 transition-all duration-500 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
+          className={`text-center max-w-2xl mx-auto mb-16 transition-all duration-300 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
         >
           <h2 className="text-4xl sm:text-5xl font-bold text-storm-fg tracking-tight mb-4">
             ¿Trabajamos juntos?
@@ -110,14 +110,14 @@ export function Contact() {
             return (
               <div
                 key={link.label}
-                className={`transition-all duration-500 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
+                className={`h-full transition-[opacity,transform] duration-300 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
                 style={{ transitionDelay: inView ? `${100 + i * 100}ms` : "0ms" }}
               >
               <a
                 href={link.href}
                 target={link.label !== "Email" ? "_blank" : undefined}
                 rel={link.label !== "Email" ? "noopener noreferrer" : undefined}
-                className="group relative p-6 rounded-2xl border border-storm-border bg-gradient-to-br from-storm-bg2 to-storm-bg overflow-hidden hover:border-storm-accent/50 hover:-translate-y-1 transition-[transform,border-color,box-shadow,background-color] duration-150"
+                className="group relative flex flex-col h-full p-6 rounded-2xl border border-storm-border bg-gradient-to-br from-storm-bg2 to-storm-bg overflow-hidden hover:border-storm-accent/50 hover:-translate-y-2 hover:shadow-[0_8px_24px_-6px_rgba(104,136,200,0.2)] transition-[transform,border-color,box-shadow,background-color] duration-200"
                 aria-label={`Contactar por ${link.label}`}
               >
                 {/* Fondo decorativo */}
@@ -158,7 +158,7 @@ export function Contact() {
         </div>
 
         <div
-          className={`flex justify-center transition-all duration-500 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
+          className={`flex justify-center transition-all duration-300 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
           style={{ transitionDelay: inView ? "400ms" : "0ms" }}
         >
           <a

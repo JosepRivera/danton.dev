@@ -12,7 +12,7 @@ export function Projects() {
     <section id="proyectos" className="px-6 py-24" aria-label="Proyectos" ref={ref}>
       <div className="mx-auto max-w-5xl">
         <div
-          className={`transition-all duration-500 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
+          className={`transition-all duration-300 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
         >
           <SectionTitle
             title="Proyectos"

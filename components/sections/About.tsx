@@ -34,7 +34,7 @@ const languages = [
 ];
 
 function fadeClass(inView: boolean) {
-  return `transition-all duration-500 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`;
+  return `transition-all duration-300 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`;
 }
 
 interface WorkCardProps {
@@ -49,7 +49,7 @@ function WorkCard({ icon: Icon, title, desc, index }: WorkCardProps) {
   return (
     <div
       ref={ref as RefCallback<HTMLDivElement>}
-      className={`flex gap-3 rounded-xl border border-storm-border bg-storm-bg2 p-4 hover:border-storm-accent/30 transition-all duration-500 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
+      className={`flex gap-3 rounded-xl border border-storm-border bg-storm-bg2 p-4 hover:border-storm-accent/30 transition-all duration-300 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
       style={{ transitionDelay: inView ? `${index * 80}ms` : "0ms" }}
     >
       <Icon className="mt-0.5 size-4 shrink-0 text-storm-accent" aria-hidden="true" />

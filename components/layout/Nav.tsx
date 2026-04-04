@@ -120,7 +120,6 @@ export function Nav() {
           >
             <Download className="size-3.5" />
             <span className="hidden sm:inline">Descargar CV</span>
-            <span className="sm:hidden">CV</span>
           </a>
 
           {/* Mobile menu button */}

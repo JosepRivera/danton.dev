@@ -17,6 +17,9 @@ export const metadata: Metadata = {
   title: "Josep Rivera — Backend Developer",
   description:
     "Backend developer con experiencia en NestJS, FastAPI, Python y Docker. Construyo APIs escalables, integro IA generativa en flujos reales y entrego sistemas que otros pueden mantener. Disponible para proyectos y prácticas.",
+  verification: {
+    google: "Ls50ORBgEyXDdxgKbW0msmqIeKzZPPaOUwnhPt4NGZc",
+  },
   keywords: [
     "backend developer",
     "NestJS",

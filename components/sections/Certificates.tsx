@@ -32,7 +32,7 @@ export function Certificates() {
     <section id="certificados" className="px-6 py-24" aria-label="Certificados" ref={ref}>
       <div className="mx-auto max-w-5xl">
         <div
-          className={`transition-all duration-500 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
+          className={`transition-all duration-300 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
         >
           <SectionTitle
             title="Certificados"
@@ -60,7 +60,7 @@ export function Certificates() {
                         src={cert.imagePath}
                         alt={`Certificado: ${cert.title}`}
                         fill
-                        className="object-cover object-top group-hover:scale-[1.04] transition-transform duration-500"
+                        className="object-cover object-top group-hover:scale-[1.04] transition-transform duration-300"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-storm-bg2/40 to-transparent" />
