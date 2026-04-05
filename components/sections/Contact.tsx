@@ -95,7 +95,7 @@ export function Contact() {
           <h2 className="text-4xl sm:text-5xl font-bold text-storm-fg tracking-tight mb-4">
             ¿Trabajamos juntos?
           </h2>
-          <div className="mx-auto mb-4 h-px w-16 bg-gradient-to-r from-transparent via-storm-accent to-transparent" />
+          <div className="mx-auto mb-4 h-px w-16 bg-linear-to-r from-transparent via-storm-accent to-transparent" />
           <p className="text-lg text-storm-fg2 leading-relaxed">
             Estoy disponible para{" "}
             <span className="text-storm-accent font-semibold">proyectos, prácticas</span> o{" "}
@@ -117,27 +117,27 @@ export function Contact() {
                 href={link.href}
                 target={link.label !== "Email" ? "_blank" : undefined}
                 rel={link.label !== "Email" ? "noopener noreferrer" : undefined}
-                className="group relative flex flex-col h-full p-6 rounded-2xl border border-storm-border bg-gradient-to-br from-storm-bg2 to-storm-bg overflow-hidden hover:border-storm-accent/50 hover:-translate-y-2 hover:shadow-[0_8px_24px_-6px_rgba(104,136,200,0.2)] transition-[transform,border-color,box-shadow,background-color] duration-200"
+                className="group relative flex flex-col h-full p-6 rounded-2xl border border-storm-border bg-linear-to-br from-storm-bg2 to-storm-bg overflow-hidden hover:border-storm-accent/50 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_-4px_rgba(104,136,200,0.2)] transition-[transform,border-color,box-shadow,background-color] duration-500 ease-out"
                 aria-label={`Contactar por ${link.label}`}
               >
                 {/* Fondo decorativo */}
                 <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-150"
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                   aria-hidden="true"
                 >
-                  <div className={`absolute inset-0 bg-gradient-to-br ${link.color} opacity-5`} />
+                  <div className={`absolute inset-0 bg-linear-to-br ${link.color} opacity-5`} />
                 </div>
 
                 <div className="relative flex flex-col gap-3">
                   <div className="flex items-center justify-between">
-                    <div className="p-2.5 rounded-lg bg-storm-bg3 group-hover:bg-storm-accent/10 transition-colors duration-150">
+                    <div className="p-2.5 rounded-lg bg-storm-bg3 group-hover:bg-storm-accent/10 transition-colors duration-300">
                       <Icon
-                        className="size-5 text-storm-accent group-hover:text-storm-accent2 transition-colors duration-150"
+                        className="size-5 text-storm-accent group-hover:text-storm-accent2 transition-colors duration-300"
                         aria-hidden="true"
                       />
                     </div>
                     <ArrowUpRight
-                      className="size-4 text-storm-fg2 group-hover:text-storm-fg group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-150 opacity-0 group-hover:opacity-100"
+                      className="size-4 text-storm-fg2 group-hover:text-storm-fg group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300 opacity-0 group-hover:opacity-100"
                       aria-hidden="true"
                     />
                   </div>
@@ -146,7 +146,7 @@ export function Contact() {
                     <p className="text-xs font-semibold text-storm-fg2 uppercase tracking-wider mb-1">
                       {link.label}
                     </p>
-                    <p className="text-sm font-medium text-storm-fg group-hover:text-storm-accent2 transition-colors duration-150 break-all">
+                    <p className="text-sm font-medium text-storm-fg group-hover:text-storm-accent2 transition-colors duration-300 break-all">
                       {link.text}
                     </p>
                   </div>
@@ -162,9 +162,9 @@ export function Contact() {
           style={{ transitionDelay: inView ? "400ms" : "0ms" }}
         >
           <a
-            href="/cv.pdf"
+            href="/Josep_Rivera_CV.pdf"
             download
-            className="group relative px-6 py-3 rounded-xl border border-storm-accent/30 bg-storm-accent/5 text-storm-fg font-medium hover:bg-storm-accent/10 hover:border-storm-accent/60 transition-all duration-200 hover:-translate-y-0.5 flex items-center gap-2 justify-center w-full sm:w-auto shadow-[0_0_20px_-8px_rgba(104,136,200,0.3)] hover:shadow-[0_0_28px_-4px_rgba(104,136,200,0.4)]"
+            className="group relative px-6 py-3 rounded-xl border border-storm-accent/30 bg-storm-accent/5 text-storm-fg font-medium hover:bg-storm-accent/10 hover:border-storm-accent/60 transition-all duration-500 ease-out hover:-translate-y-0.5 flex items-center gap-2 justify-center w-full sm:w-auto shadow-[0_0_20px_-8px_rgba(104,136,200,0.3)] hover:shadow-[0_0_28px_-4px_rgba(104,136,200,0.4)]"
           >
             <Download className="size-4" />
             Descargar CV

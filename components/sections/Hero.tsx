@@ -53,7 +53,7 @@ export function Hero() {
         {/* Text content */}
         <div className="flex flex-col items-center gap-5 text-center md:items-start md:text-left md:max-w-lg">
           {/* Availability + location badge */}
-          <div className="animate-fade-up flex flex-wrap items-center gap-3 w-full">
+          <div className="animate-fade-up flex items-center gap-3 w-full">
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-storm-accent/10 to-transparent border border-storm-accent/30 rounded-lg px-4 py-2.5 backdrop-blur-sm">
               <span
                 className="size-2 rounded-full bg-storm-accent animate-pulse"
