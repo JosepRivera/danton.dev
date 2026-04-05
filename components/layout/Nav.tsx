@@ -2,15 +2,9 @@
 
 import { Download, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useLanguage } from "@/components/providers/LanguageProvider";
+import { translations } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
-
-const navLinks = [
-  { label: "Sobre mí", href: "#sobre-mi", sectionId: "sobre-mi" },
-  { label: "Proyectos", href: "#proyectos", sectionId: "proyectos" },
-  { label: "Skills", href: "#skills", sectionId: "skills" },
-  { label: "Certificados", href: "#certificados", sectionId: "certificados" },
-  { label: "Contacto", href: "#contacto", sectionId: "contacto" },
-];
 
 const sectionIds = [
   "hero",
@@ -26,6 +20,8 @@ export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
+  const { lang, setLang } = useLanguage();
+  const t = translations[lang].nav;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -78,7 +74,7 @@ export function Nav() {
         <a
           href="#hero"
           className="group flex items-center gap-px focus-visible:outline-none"
-          aria-label="Ir al inicio"
+          aria-label={t.goHome}
         >
           <span className="flex items-center justify-center size-9 rounded-lg border border-storm-border bg-storm-bg2 group-hover:border-storm-accent/40 transition-colors duration-200">
             <span className="font-heading text-sm font-bold tracking-tight">
@@ -90,7 +86,7 @@ export function Nav() {
 
         {/* Desktop links */}
         <ul className="hidden md:flex items-center gap-1">
-          {navLinks.map((link) => {
+          {t.links.map((link) => {
             const isActive = activeSection === link.sectionId;
             return (
               <li key={link.href}>
@@ -112,6 +108,34 @@ export function Nav() {
 
         {/* Right side controls */}
         <div className="flex items-center gap-2">
+          {/* Language toggle */}
+          <div className="flex items-center rounded-lg border border-storm-border bg-storm-bg2 p-0.5">
+            <button
+              type="button"
+              onClick={() => setLang("es")}
+              className={cn(
+                "px-2 py-1 rounded-md text-xs font-medium transition-colors duration-150",
+                lang === "es" ? "bg-storm-bg3 text-storm-fg" : "text-storm-fg2 hover:text-storm-fg",
+              )}
+              aria-pressed={lang === "es"}
+              aria-label="Cambiar a español"
+            >
+              ES
+            </button>
+            <button
+              type="button"
+              onClick={() => setLang("en")}
+              className={cn(
+                "px-2 py-1 rounded-md text-xs font-medium transition-colors duration-150",
+                lang === "en" ? "bg-storm-bg3 text-storm-fg" : "text-storm-fg2 hover:text-storm-fg",
+              )}
+              aria-pressed={lang === "en"}
+              aria-label="Switch to English"
+            >
+              EN
+            </button>
+          </div>
+
           {/* CV button — always visible */}
           <a
             href="/Josep_Rivera_CV.pdf"
@@ -119,7 +143,7 @@ export function Nav() {
             className="inline-flex items-center gap-1.5 rounded-lg border border-storm-accent/40 bg-storm-accent/10 px-3.5 py-2 text-sm font-medium text-storm-accent hover:bg-storm-accent/20 transition-colors duration-150"
           >
             <Download className="size-3.5" />
-            <span className="hidden sm:inline">Descargar CV</span>
+            <span className="hidden sm:inline">{t.downloadCv}</span>
           </a>
 
           {/* Mobile menu button */}
@@ -128,14 +152,14 @@ export function Nav() {
             onClick={() => setMenuOpen((v) => !v)}
             className="md:hidden flex items-center justify-center rounded-lg p-2 text-storm-fg2 hover:text-storm-fg hover:bg-storm-bg3 transition-colors"
             aria-expanded={menuOpen}
-            aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+            aria-label={menuOpen ? t.closeMenu : t.openMenu}
           >
             {menuOpen ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
         </div>
       </nav>
 
-      {/* Mobile menu — CSS transition, no JS library needed */}
+      {/* Mobile menu */}
       <div
         className={cn(
           "md:hidden border-storm-border bg-storm-bg2/95 backdrop-blur-md overflow-hidden transition-all duration-200",
@@ -143,7 +167,7 @@ export function Nav() {
         )}
       >
         <ul className="flex flex-col px-6 py-4 gap-1">
-          {navLinks.map((link) => {
+          {t.links.map((link) => {
             const isActive = activeSection === link.sectionId;
             return (
               <li key={link.href}>

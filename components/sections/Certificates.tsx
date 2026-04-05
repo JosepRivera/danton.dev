@@ -2,8 +2,10 @@
 
 import { Award, Clock, ExternalLink } from "lucide-react";
 import Image from "next/image";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { certificates } from "@/data/certificates";
+import { translations } from "@/lib/i18n";
 import { useInView } from "@/lib/use-in-view";
 
 const issuerConfig: Record<string, { bar: string; badge: string; dot: string }> = {
@@ -27,17 +29,16 @@ const fallbackConfig = {
 
 export function Certificates() {
   const { ref, inView } = useInView(0.05);
+  const { lang } = useLanguage();
+  const t = translations[lang].certificates;
 
   return (
-    <section id="certificados" className="px-6 py-24" aria-label="Certificados" ref={ref}>
+    <section id="certificados" className="px-6 py-24" aria-label={t.title} ref={ref}>
       <div className="mx-auto max-w-5xl">
         <div
           className={`transition-all duration-300 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
         >
-          <SectionTitle
-            title="Certificados"
-            subtitle="Cursos y certificaciones completados — más de 275 horas de formación."
-          />
+          <SectionTitle title={t.title} subtitle={t.subtitle} />
         </div>
 
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -49,10 +50,8 @@ export function Certificates() {
                 className={`group relative flex flex-col rounded-2xl border border-storm-border bg-storm-bg2 overflow-hidden hover:border-storm-accent/40 hover:shadow-[0_0_32px_-4px_rgba(104,136,200,0.15)] transition-all duration-300 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
                 style={{ transitionDelay: inView ? `${100 + i * 80}ms` : "0ms" }}
               >
-                {/* Top accent bar */}
                 <div className={`h-0.5 w-full ${cfg.bar}`} />
 
-                {/* Certificate image */}
                 <div className="relative h-44 w-full bg-storm-bg3 overflow-hidden">
                   {cert.imagePath ? (
                     <>
@@ -81,7 +80,6 @@ export function Certificates() {
                   </div>
                 </div>
 
-                {/* Content */}
                 <div className="flex flex-col gap-3 p-5 flex-1">
                   <h3 className="text-sm font-semibold text-storm-fg leading-snug">{cert.title}</h3>
 
@@ -106,7 +104,7 @@ export function Certificates() {
                       className="inline-flex items-center gap-1.5 rounded-lg border border-storm-border bg-storm-bg3 px-3 py-2 text-xs font-medium text-storm-fg2 hover:border-storm-accent/50 hover:text-storm-fg hover:bg-storm-accent/5 transition-all duration-150 focus-visible:ring-2 focus-visible:ring-storm-accent focus-visible:outline-none"
                     >
                       <ExternalLink className="size-3.5" aria-hidden="true" />
-                      Ver certificado
+                      {t.viewCertificate}
                     </a>
                   </div>
                 </div>

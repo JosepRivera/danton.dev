@@ -2,6 +2,8 @@
 
 import { ExternalLink, Globe, Smartphone } from "lucide-react";
 import type { Project, ProjectVersion } from "@/data/projects";
+import type { Lang } from "@/lib/i18n";
+import { translations } from "@/lib/i18n";
 import { useInView } from "@/lib/use-in-view";
 import { cn } from "@/lib/utils";
 
@@ -30,7 +32,6 @@ const badgeStyles = {
   internship: "bg-amber-500/10 text-amber-400 border border-amber-500/20",
 };
 
-/** Tech-specific deploy button styles */
 const techButtonActive: Record<string, string> = {
   Flutter:
     "border-[#54C5F8]/40 bg-[#54C5F8]/10 text-[#54C5F8] hover:bg-[#54C5F8]/20 hover:border-[#54C5F8]/60",
@@ -49,9 +50,10 @@ const techButtonDisabled: Record<string, string> = {
 interface VersionButtonProps {
   version: ProjectVersion;
   size?: "sm" | "xs";
+  comingSoonLabel: string;
 }
 
-function VersionButton({ version, size = "sm" }: VersionButtonProps) {
+function VersionButton({ version, size = "sm", comingSoonLabel }: VersionButtonProps) {
   const isActive = version.status === "done" && !!version.deployedUrl;
   const Icon = version.label === "Mobile" ? Smartphone : Globe;
   const px = size === "xs" ? "px-3 py-1.5 text-xs" : "px-3 py-1.5 text-sm";
@@ -86,7 +88,7 @@ function VersionButton({ version, size = "sm" }: VersionButtonProps) {
         techButtonDisabled[version.tech] ??
           "border-storm-border/50 bg-storm-bg3/40 text-storm-fg2/50",
       )}
-      title="Próximamente"
+      title={comingSoonLabel}
     >
       <Icon className={iconSize} />
       {version.label} · {version.tech}
@@ -97,9 +99,9 @@ function VersionButton({ version, size = "sm" }: VersionButtonProps) {
 interface ProjectCardProps {
   project: Project;
   index: number;
+  lang: Lang;
 }
 
-/** Visual placeholder that simulates a project screenshot area */
 function ProjectVisual({ project }: { project: Project }) {
   return (
     <div
@@ -109,7 +111,6 @@ function ProjectVisual({ project }: { project: Project }) {
       }}
       aria-hidden="true"
     >
-      {/* Abstract grid lines */}
       <svg
         className="absolute inset-0 w-full h-full opacity-20"
         xmlns="http://www.w3.org/2000/svg"
@@ -133,7 +134,6 @@ function ProjectVisual({ project }: { project: Project }) {
         <rect width="100%" height="100%" fill={`url(#grid-${project.title})`} />
       </svg>
 
-      {/* Decorative circles */}
       <div
         className="absolute -top-8 -right-8 size-32 rounded-full opacity-20 blur-2xl"
         style={{ backgroundColor: project.accentColor }}
@@ -143,7 +143,6 @@ function ProjectVisual({ project }: { project: Project }) {
         style={{ backgroundColor: project.accentColor }}
       />
 
-      {/* Project initials badge */}
       <div className="absolute inset-0 flex items-center justify-center">
         <div
           className="flex items-center justify-center size-14 rounded-2xl border text-xl font-bold font-heading opacity-60"
@@ -164,8 +163,13 @@ function ProjectVisual({ project }: { project: Project }) {
   );
 }
 
-export function ProjectCard({ project, index }: ProjectCardProps) {
+export function ProjectCard({ project, index, lang }: ProjectCardProps) {
   const { ref, inView } = useInView(0.1);
+  const t = translations[lang].projects;
+
+  const description = lang === "en" ? project.descriptionEn : project.description;
+  const detail = lang === "en" ? project.detailEn : project.detail;
+  const badge = lang === "en" ? project.badgeEn : project.badge;
 
   const animClass = inView ? "animate-fade-up" : "opacity-0";
   const delay = { animationDelay: `${index * 150}ms` };
@@ -178,17 +182,15 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         style={delay}
       >
         <div className="grid md:grid-cols-5">
-          {/* Visual area */}
           <div className="md:col-span-2 h-48 md:h-auto min-h-50">
             <ProjectVisual project={project} />
           </div>
 
-          {/* Content */}
           <div className="md:col-span-3 flex flex-col gap-4 p-6 md:p-8">
             <div className="flex items-start justify-between gap-3">
               <div>
                 <p className="text-xs font-medium text-storm-fg2 uppercase tracking-wider mb-1">
-                  Proyecto destacado
+                  {t.featured}
                 </p>
                 <h3 className="text-xl font-bold font-heading text-storm-fg leading-tight">
                   {project.title}
@@ -200,14 +202,12 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                   badgeStyles[project.badgeVariant],
                 )}
               >
-                {project.badge}
+                {badge}
               </span>
             </div>
 
-            <p className="text-sm text-storm-fg2 leading-relaxed font-medium">
-              {project.description}
-            </p>
-            <p className="text-sm text-storm-fg2 leading-relaxed">{project.detail}</p>
+            <p className="text-sm text-storm-fg2 leading-relaxed font-medium">{description}</p>
+            <p className="text-sm text-storm-fg2 leading-relaxed">{detail}</p>
 
             <div className="flex flex-wrap gap-2 pt-2">
               {project.stack.map((tech) => (
@@ -229,11 +229,16 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 aria-label={`Ver código de ${project.title} en GitHub`}
               >
                 <GithubIcon className="size-4" />
-                Ver en GitHub
+                {t.viewOnGithub}
                 <ExternalLink className="size-3 opacity-60" />
               </a>
               {project.versions?.map((v) => (
-                <VersionButton key={`${v.label}-${v.tech}`} version={v} size="sm" />
+                <VersionButton
+                  key={`${v.label}-${v.tech}`}
+                  version={v}
+                  size="sm"
+                  comingSoonLabel={t.comingSoon}
+                />
               ))}
             </div>
           </div>
@@ -248,12 +253,10 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       className={`group flex flex-col rounded-xl border border-storm-border bg-storm-bg2 overflow-hidden hover:border-storm-accent/30 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-8px_rgba(104,136,200,0.12)] transition-[border-color,transform,box-shadow] duration-200 ease-out ${animClass}`}
       style={delay}
     >
-      {/* Visual placeholder */}
       <div className="h-52 w-full">
         <ProjectVisual project={project} />
       </div>
 
-      {/* Content */}
       <div className="flex flex-col gap-3 p-5 flex-1">
         <div className="flex items-start justify-between gap-3">
           <h3 className="text-base font-semibold font-heading text-storm-fg leading-tight">
@@ -265,12 +268,12 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               badgeStyles[project.badgeVariant],
             )}
           >
-            {project.badge}
+            {badge}
           </span>
         </div>
 
-        <p className="text-sm text-storm-fg2 leading-relaxed">{project.description}</p>
-        <p className="text-xs text-storm-fg2 leading-relaxed opacity-80">{project.detail}</p>
+        <p className="text-sm text-storm-fg2 leading-relaxed">{description}</p>
+        <p className="text-xs text-storm-fg2 leading-relaxed opacity-80">{detail}</p>
 
         <div className="flex flex-wrap gap-1.5 pt-1">
           {project.stack.map((tech) => (
@@ -292,11 +295,16 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             aria-label={`Ver código de ${project.title} en GitHub`}
           >
             <GithubIcon className="size-3.5" />
-            Ver en GitHub
+            {t.viewOnGithub}
             <ExternalLink className="size-3 opacity-60" />
           </a>
           {project.versions?.map((v) => (
-            <VersionButton key={`${v.label}-${v.tech}`} version={v} size="xs" />
+            <VersionButton
+              key={`${v.label}-${v.tech}`}
+              version={v}
+              size="xs"
+              comingSoonLabel={t.comingSoon}
+            />
           ))}
         </div>
       </div>

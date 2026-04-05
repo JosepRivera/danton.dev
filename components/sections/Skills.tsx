@@ -1,12 +1,16 @@
 "use client";
 
+import { useLanguage } from "@/components/providers/LanguageProvider";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { SkillBadge } from "@/components/ui/SkillBadge";
 import { skillCategories } from "@/data/skills";
+import { translations } from "@/lib/i18n";
 import { useInView } from "@/lib/use-in-view";
 
 export function Skills() {
   const { ref, inView } = useInView(0.05);
+  const { lang } = useLanguage();
+  const t = translations[lang].skills;
 
   return (
     <section id="skills" className="px-6 py-24 select-none" aria-label="Skills" ref={ref}>
@@ -14,10 +18,7 @@ export function Skills() {
         <div
           className={`transition-all duration-300 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
         >
-          <SectionTitle
-            title="Skills"
-            subtitle="Tecnologías que he usado a lo largo de mi carrera y proyectos."
-          />
+          <SectionTitle title={t.title} subtitle={t.subtitle} />
         </div>
 
         <div className="grid gap-10 sm:grid-cols-2">
@@ -28,7 +29,7 @@ export function Skills() {
               style={{ transitionDelay: inView ? `${catIndex * 100}ms` : "0ms" }}
             >
               <h3 className="text-sm font-semibold uppercase tracking-wider text-storm-fg2">
-                {cat.category}
+                {t.categoryMap[cat.category] ?? cat.category}
               </h3>
               <div className="flex flex-wrap gap-2">
                 {cat.skills.map((skill, skillIndex) => (

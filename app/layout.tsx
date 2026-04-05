@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Syne } from "next/font/google";
+import { LanguageProvider } from "@/components/providers/LanguageProvider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -121,7 +122,9 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <LanguageProvider>{children}</LanguageProvider>
+      </body>
     </html>
   );
 }

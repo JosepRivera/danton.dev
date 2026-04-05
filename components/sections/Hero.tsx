@@ -1,5 +1,9 @@
+"use client";
+
 import { ArrowDown, Mail, MapPin } from "lucide-react";
 import Image from "next/image";
+import { useLanguage } from "@/components/providers/LanguageProvider";
+import { translations } from "@/lib/i18n";
 
 function GithubIcon({ className }: { className?: string }) {
   return (
@@ -43,11 +47,14 @@ function LinkedinIcon({ className }: { className?: string }) {
 const techPills = ["NestJS", "FastAPI", "Flutter", "Docker", "PostgreSQL", "IA"];
 
 export function Hero() {
+  const { lang } = useLanguage();
+  const t = translations[lang].hero;
+
   return (
     <section
       id="hero"
       className="relative flex min-h-screen items-center px-6 pt-20"
-      aria-label="Presentación"
+      aria-label={t.ariaLabel}
     >
       <div className="mx-auto flex w-full max-w-5xl flex-col-reverse items-center gap-12 py-20 md:flex-row md:justify-between">
         {/* Text content */}
@@ -60,7 +67,8 @@ export function Hero() {
                 aria-hidden="true"
               />
               <span className="text-sm font-medium text-storm-fg italic">
-                <span className="text-storm-accent">"</span>Creando software con propósito
+                <span className="text-storm-accent">"</span>
+                {t.quote}
                 <span className="text-storm-accent">"</span>
               </span>
             </div>
@@ -81,16 +89,14 @@ export function Hero() {
             className="animate-fade-up text-xl font-semibold text-storm-accent sm:text-2xl"
             style={{ animationDelay: "200ms" }}
           >
-            Backend Developer
+            {t.role}
           </p>
 
           <p
             className="animate-fade-up text-base text-storm-fg2 leading-relaxed max-w-md"
             style={{ animationDelay: "300ms" }}
           >
-            Estoy en el último año de Diseño y Desarrollo de Software en Tecsup. Construyo APIs que
-            escalan, integro IA en flujos reales y le doy importancia al código que otros puedan
-            mantener.
+            {t.description}
           </p>
 
           {/* Tech pills */}
@@ -118,14 +124,14 @@ export function Hero() {
               className="inline-flex items-center gap-2 rounded-lg bg-linear-to-r from-[#1a2d5c] to-[#2d4d9e] hover:from-[#1f3570] hover:to-[#3458b8] px-5 py-2.5 text-sm font-semibold text-white hover:-translate-y-0.5 transition-all duration-150 shadow-[0_0_20px_-6px_rgba(45,77,158,0.5)] hover:shadow-[0_0_24px_-4px_rgba(52,88,184,0.6)] focus-visible:ring-2 focus-visible:ring-[#3458b8] focus-visible:outline-none"
             >
               <ArrowDown className="size-4" />
-              Ver proyectos
+              {t.seeProjects}
             </a>
             <a
               href="#contacto"
               className="inline-flex items-center gap-2 rounded-lg border border-storm-border px-5 py-2.5 text-sm font-semibold text-storm-fg2 hover:border-storm-accent/40 hover:text-storm-fg hover:-translate-y-0.5 transition-all duration-150 focus-visible:ring-2 focus-visible:ring-storm-accent focus-visible:outline-none"
             >
               <Mail className="size-4" />
-              Contactar
+              {t.contact}
             </a>
           </div>
 
@@ -153,9 +159,7 @@ export function Hero() {
               <LinkedinIcon className="size-5" />
             </a>
             <span className="h-4 w-px bg-storm-border" aria-hidden="true" />
-            <span className="text-xs text-storm-fg2">
-              Disponible para colaborar en proyectos y equipos de desarrollo
-            </span>
+            <span className="text-xs text-storm-fg2">{t.availability}</span>
           </div>
         </div>
 

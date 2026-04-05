@@ -1,3 +1,4 @@
+import { Footer } from "@/components/layout/Footer";
 import { Nav } from "@/components/layout/Nav";
 import { About } from "@/components/sections/About";
 import { Certificates } from "@/components/sections/Certificates";
@@ -30,12 +31,7 @@ export default function Home() {
         <Certificates />
         <Contact />
       </main>
-      <footer className="relative border-t border-storm-border py-6 text-center text-sm text-storm-fg2">
-        <p>
-          Diseñado y construido por <span className="text-storm-fg font-medium">Josep Rivera</span>{" "}
-          · {new Date().getFullYear()}
-        </p>
-      </footer>
+      <Footer />
     </>
   );
 }

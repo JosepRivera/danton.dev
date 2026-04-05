@@ -2,6 +2,8 @@
 
 import { ArrowUpRight, Download, Mail } from "lucide-react";
 import type { ElementType } from "react";
+import { useLanguage } from "@/components/providers/LanguageProvider";
+import { translations } from "@/lib/i18n";
 import { useInView } from "@/lib/use-in-view";
 
 function GithubIcon({ className }: { className?: string }) {
@@ -75,10 +77,11 @@ const contactLinks: {
 
 export function Contact() {
   const { ref, inView } = useInView(0.05);
+  const { lang } = useLanguage();
+  const t = translations[lang].contact;
 
   return (
-    <section id="contacto" className="px-6 py-24 relative" aria-label="Contacto" ref={ref}>
-      {/* Fondo sutil decorativo */}
+    <section id="contacto" className="px-6 py-24 relative" aria-label={t.title} ref={ref}>
       <div className="absolute inset-0 pointer-events-none overflow-hidden -z-10">
         <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-storm-accent/5 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2" />
       </div>
@@ -88,14 +91,25 @@ export function Contact() {
           className={`text-center max-w-2xl mx-auto mb-16 transition-all duration-300 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
         >
           <h2 className="text-4xl sm:text-5xl font-bold text-storm-fg tracking-tight mb-4">
-            ¿Trabajamos juntos?
+            {t.title}
           </h2>
           <div className="mx-auto mb-4 h-px w-16 bg-linear-to-r from-transparent via-storm-accent to-transparent" />
           <p className="text-lg text-storm-fg2 leading-relaxed">
-            Estoy disponible para{" "}
-            <span className="text-storm-accent font-semibold">proyectos, prácticas</span> o{" "}
-            <span className="text-storm-accent font-semibold">conversaciones interesantes</span> que
-            impulsen tecnología con propósito.
+            {lang === "es" ? (
+              <>
+                Estoy disponible para{" "}
+                <span className="text-storm-accent font-semibold">proyectos, prácticas</span> o{" "}
+                <span className="text-storm-accent font-semibold">conversaciones interesantes</span>{" "}
+                que impulsen tecnología con propósito.
+              </>
+            ) : (
+              <>
+                I'm available for{" "}
+                <span className="text-storm-accent font-semibold">projects, internships</span> or{" "}
+                <span className="text-storm-accent font-semibold">interesting conversations</span>{" "}
+                that drive technology with purpose.
+              </>
+            )}
           </p>
         </div>
 
@@ -113,9 +127,8 @@ export function Contact() {
                   target={link.label !== "Email" ? "_blank" : undefined}
                   rel={link.label !== "Email" ? "noopener noreferrer" : undefined}
                   className="group relative flex flex-col h-full p-6 rounded-2xl border border-storm-border bg-linear-to-br from-storm-bg2 to-storm-bg overflow-hidden hover:border-storm-accent/50 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_-4px_rgba(104,136,200,0.2)] transition-[transform,border-color,box-shadow,background-color] duration-500 ease-out"
-                  aria-label={`Contactar por ${link.label}`}
+                  aria-label={`${t.contactBy} ${link.label}`}
                 >
-                  {/* Fondo decorativo */}
                   <div
                     className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                     aria-hidden="true"
@@ -162,7 +175,7 @@ export function Contact() {
             className="group relative px-6 py-3 rounded-xl border border-storm-accent/30 bg-storm-accent/5 text-storm-fg font-medium hover:bg-storm-accent/10 hover:border-storm-accent/60 transition-all duration-500 ease-out hover:-translate-y-0.5 flex items-center gap-2 justify-center w-full sm:w-auto shadow-[0_0_20px_-8px_rgba(104,136,200,0.3)] hover:shadow-[0_0_28px_-4px_rgba(104,136,200,0.4)]"
           >
             <Download className="size-4" />
-            Descargar CV
+            {t.downloadCv}
           </a>
         </div>
       </div>
