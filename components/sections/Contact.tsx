@@ -77,12 +77,7 @@ export function Contact() {
   const { ref, inView } = useInView(0.05);
 
   return (
-    <section
-      id="contacto"
-      className="px-6 py-24 relative"
-      aria-label="Contacto"
-      ref={ref}
-    >
+    <section id="contacto" className="px-6 py-24 relative" aria-label="Contacto" ref={ref}>
       {/* Fondo sutil decorativo */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden -z-10">
         <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-storm-accent/5 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2" />
@@ -113,45 +108,45 @@ export function Contact() {
                 className={`h-full transition-[opacity,transform] duration-300 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
                 style={{ transitionDelay: inView ? `${100 + i * 100}ms` : "0ms" }}
               >
-              <a
-                href={link.href}
-                target={link.label !== "Email" ? "_blank" : undefined}
-                rel={link.label !== "Email" ? "noopener noreferrer" : undefined}
-                className="group relative flex flex-col h-full p-6 rounded-2xl border border-storm-border bg-linear-to-br from-storm-bg2 to-storm-bg overflow-hidden hover:border-storm-accent/50 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_-4px_rgba(104,136,200,0.2)] transition-[transform,border-color,box-shadow,background-color] duration-500 ease-out"
-                aria-label={`Contactar por ${link.label}`}
-              >
-                {/* Fondo decorativo */}
-                <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  aria-hidden="true"
+                <a
+                  href={link.href}
+                  target={link.label !== "Email" ? "_blank" : undefined}
+                  rel={link.label !== "Email" ? "noopener noreferrer" : undefined}
+                  className="group relative flex flex-col h-full p-6 rounded-2xl border border-storm-border bg-linear-to-br from-storm-bg2 to-storm-bg overflow-hidden hover:border-storm-accent/50 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_-4px_rgba(104,136,200,0.2)] transition-[transform,border-color,box-shadow,background-color] duration-500 ease-out"
+                  aria-label={`Contactar por ${link.label}`}
                 >
-                  <div className={`absolute inset-0 bg-linear-to-br ${link.color} opacity-5`} />
-                </div>
+                  {/* Fondo decorativo */}
+                  <div
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    aria-hidden="true"
+                  >
+                    <div className={`absolute inset-0 bg-linear-to-br ${link.color} opacity-5`} />
+                  </div>
 
-                <div className="relative flex flex-col gap-3">
-                  <div className="flex items-center justify-between">
-                    <div className="p-2.5 rounded-lg bg-storm-bg3 group-hover:bg-storm-accent/10 transition-colors duration-300">
-                      <Icon
-                        className="size-5 text-storm-accent group-hover:text-storm-accent2 transition-colors duration-300"
+                  <div className="relative flex flex-col gap-3">
+                    <div className="flex items-center justify-between">
+                      <div className="p-2.5 rounded-lg bg-storm-bg3 group-hover:bg-storm-accent/10 transition-colors duration-300">
+                        <Icon
+                          className="size-5 text-storm-accent group-hover:text-storm-accent2 transition-colors duration-300"
+                          aria-hidden="true"
+                        />
+                      </div>
+                      <ArrowUpRight
+                        className="size-4 text-storm-fg2 group-hover:text-storm-fg group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300 opacity-0 group-hover:opacity-100"
                         aria-hidden="true"
                       />
                     </div>
-                    <ArrowUpRight
-                      className="size-4 text-storm-fg2 group-hover:text-storm-fg group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300 opacity-0 group-hover:opacity-100"
-                      aria-hidden="true"
-                    />
-                  </div>
 
-                  <div>
-                    <p className="text-xs font-semibold text-storm-fg2 uppercase tracking-wider mb-1">
-                      {link.label}
-                    </p>
-                    <p className="text-sm font-medium text-storm-fg group-hover:text-storm-accent2 transition-colors duration-300 break-all">
-                      {link.text}
-                    </p>
+                    <div>
+                      <p className="text-xs font-semibold text-storm-fg2 uppercase tracking-wider mb-1">
+                        {link.label}
+                      </p>
+                      <p className="text-sm font-medium text-storm-fg group-hover:text-storm-accent2 transition-colors duration-300 break-all">
+                        {link.text}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </a>
+                </a>
               </div>
             );
           })}

@@ -54,7 +54,7 @@ export function Hero() {
         <div className="flex flex-col items-center gap-5 text-center md:items-start md:text-left md:max-w-lg">
           {/* Availability + location badge */}
           <div className="animate-fade-up flex items-center gap-3 w-full">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-storm-accent/10 to-transparent border border-storm-accent/30 rounded-lg px-4 py-2.5 backdrop-blur-sm">
+            <div className="inline-flex items-center gap-2 bg-linear-to-r from-storm-accent/10 to-transparent border border-storm-accent/30 rounded-lg px-4 py-2.5 backdrop-blur-sm">
               <span
                 className="size-2 rounded-full bg-storm-accent animate-pulse"
                 aria-hidden="true"
@@ -115,7 +115,7 @@ export function Hero() {
           >
             <a
               href="#proyectos"
-              className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-[#1a2d5c] to-[#2d4d9e] hover:from-[#1f3570] hover:to-[#3458b8] px-5 py-2.5 text-sm font-semibold text-white hover:-translate-y-0.5 transition-all duration-150 shadow-[0_0_20px_-6px_rgba(45,77,158,0.5)] hover:shadow-[0_0_24px_-4px_rgba(52,88,184,0.6)] focus-visible:ring-2 focus-visible:ring-[#3458b8] focus-visible:outline-none"
+              className="inline-flex items-center gap-2 rounded-lg bg-linear-to-r from-[#1a2d5c] to-[#2d4d9e] hover:from-[#1f3570] hover:to-[#3458b8] px-5 py-2.5 text-sm font-semibold text-white hover:-translate-y-0.5 transition-all duration-150 shadow-[0_0_20px_-6px_rgba(45,77,158,0.5)] hover:shadow-[0_0_24px_-4px_rgba(52,88,184,0.6)] focus-visible:ring-2 focus-visible:ring-[#3458b8] focus-visible:outline-none"
             >
               <ArrowDown className="size-4" />
               Ver proyectos
