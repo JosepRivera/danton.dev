@@ -19,6 +19,7 @@ export const skillCategories: SkillCategory[] = [
       { name: "Laravel", iconKey: "laravel" },
       { name: "Node.js", iconKey: "nodejs" },
       { name: "Express", iconKey: "express" },
+      { name: "Fastify", iconKey: "fastify" },
     ],
   },
   {
@@ -27,6 +28,10 @@ export const skillCategories: SkillCategory[] = [
       { name: "React", iconKey: "react" },
       { name: "Next.js", iconKey: "nextjs" },
       { name: "Flutter", iconKey: "flutter" },
+      { name: "Svelte", iconKey: "svelte" },
+      { name: "SwiftUI", iconKey: "swiftui" },
+      { name: "UIKit", iconKey: "uikit" },
+      { name: "Jetpack Compose", iconKey: "jetpackcompose" },
     ],
   },
   {
@@ -49,6 +54,10 @@ export const skillCategories: SkillCategory[] = [
       { name: "MongoDB", iconKey: "mongodb" },
       { name: "Prisma", iconKey: "prisma" },
       { name: "SQLite", iconKey: "sqlite" },
+      { name: "Oracle", iconKey: "oracle" },
+      { name: "Redis", iconKey: "redis" },
+      { name: "CoreData", iconKey: "coredata" },
+      { name: "Swift Data", iconKey: "swiftdata" },
     ],
   },
   {
@@ -58,6 +67,8 @@ export const skillCategories: SkillCategory[] = [
       { name: "AWS", iconKey: "aws" },
       { name: "Azure", iconKey: "azure" },
       { name: "Git", iconKey: "git" },
+      { name: "Azure DevOps", iconKey: "azuredevops" },
+      { name: "Linux", iconKey: "linux" },
     ],
   },
   {
@@ -70,6 +81,12 @@ export const skillCategories: SkillCategory[] = [
       { name: "pnpm", iconKey: "pnpm" },
       { name: "Zod", iconKey: "zod" },
       { name: "Swagger", iconKey: "swagger" },
+      { name: "Linear", iconKey: "linear" },
+      { name: "GitHub", iconKey: "github" },
+      { name: "npm", iconKey: "npm" },
+      { name: "Bun", iconKey: "bun" },
+      { name: "Yarn", iconKey: "yarn" },
+      { name: "Scrum", iconKey: "scrum" },
     ],
   },
 ];
