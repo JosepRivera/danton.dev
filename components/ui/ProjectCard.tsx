@@ -273,7 +273,7 @@ export function ProjectCard({ project, index, lang }: ProjectCardProps) {
         </div>
 
         <p className="text-sm text-storm-fg2 leading-relaxed">{description}</p>
-        <p className="text-xs text-storm-fg2 leading-relaxed opacity-80">{detail}</p>
+        <p className="text-sm text-storm-fg2 leading-relaxed opacity-80">{detail}</p>
 
         <div className="flex flex-wrap gap-1.5 pt-1">
           {project.stack.map((tech) => (

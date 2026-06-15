@@ -45,7 +45,7 @@ export const translations = {
       languagesLabel: "Idiomas",
       languages: [
         { name: "Español", level: "Nativo" },
-        { name: "Inglés", level: "A2 · En progreso" },
+        { name: "Inglés", level: "B1 · Finalizado" },
       ],
       howIWork: "Cómo trabajo",
       softSkills: [
@@ -90,7 +90,7 @@ export const translations = {
       degreeSchool: "Tecsup, Lima",
       degreeYears: "2023 – 2026",
       degreeDescription:
-        "Carrera técnica de 3 años · 131 créditos · 2 960 horas con orientación en ingeniería de software. Cubre desarrollo web full-stack, mobile (Android, iOS, multiplataforma), arquitectura de sistemas, bases de datos relacionales y NoSQL, cloud (AWS, Azure), DevOps y pruebas de software.",
+        "Carrera técnica de 3 años en Tecsup con enfoque en ingeniería de software. Cubre backend, frontend, mobile (Android, iOS, Flutter), cloud, DevOps, bases de datos y testing.",
       experienceLabel: "Experiencia",
       internshipTitle: "Pasantía · Desarrollador",
       internshipProject: "Sistema de Inventario con IA — Tecsup",
@@ -106,6 +106,7 @@ export const translations = {
       title: "Certificados",
       subtitle: "Cursos y certificaciones completados — más de 275 horas de formación.",
       viewCertificate: "Ver certificado",
+      downloadPdf: "Descargar PDF",
     },
     contact: {
       title: "¿Trabajamos juntos?",
@@ -153,7 +154,7 @@ export const translations = {
       languagesLabel: "Languages",
       languages: [
         { name: "Spanish", level: "Native" },
-        { name: "English", level: "A2 · In progress" },
+        { name: "English", level: "B1 · Completed" },
       ],
       howIWork: "How I work",
       softSkills: [
@@ -198,7 +199,7 @@ export const translations = {
       degreeSchool: "Tecsup, Lima",
       degreeYears: "2023 – 2026",
       degreeDescription:
-        "3-year technical degree · 131 credits · 2,960 hours with a focus on software engineering. Covers full-stack web development, mobile (Android, iOS, cross-platform), systems architecture, relational and NoSQL databases, cloud (AWS, Azure), DevOps and software testing.",
+        "3-year technical degree at Tecsup focused on software engineering. Covers backend, frontend, mobile (Android, iOS, Flutter), cloud, DevOps, databases and testing.",
       experienceLabel: "Experience",
       internshipTitle: "Internship · Developer",
       internshipProject: "AI Inventory System — Tecsup",
@@ -214,6 +215,7 @@ export const translations = {
       title: "Certificates",
       subtitle: "Completed courses and certifications — over 275 hours of training.",
       viewCertificate: "View certificate",
+      downloadPdf: "Download PDF",
     },
     contact: {
       title: "Work with me?",

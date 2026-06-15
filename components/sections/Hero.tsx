@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowDown, Mail, MapPin } from "lucide-react";
+import { ArrowDown, Mail } from "lucide-react";
 import Image from "next/image";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { translations } from "@/lib/i18n";
@@ -44,8 +44,6 @@ function LinkedinIcon({ className }: { className?: string }) {
   );
 }
 
-const techPills = ["NestJS", "FastAPI", "Flutter", "Docker", "PostgreSQL", "IA"];
-
 export function Hero() {
   const { lang } = useLanguage();
   const t = translations[lang].hero;
@@ -57,67 +55,28 @@ export function Hero() {
       aria-label={t.ariaLabel}
     >
       <div className="mx-auto flex w-full max-w-5xl flex-col-reverse items-center gap-12 py-20 md:flex-row md:justify-between">
-        {/* Text content */}
         <div className="flex flex-col items-center gap-5 text-center md:items-start md:text-left md:max-w-lg">
-          {/* Availability + location badge */}
-          <div className="animate-fade-up flex items-center gap-3 w-full">
-            <div className="inline-flex items-center gap-2 bg-linear-to-r from-storm-accent/10 to-transparent border border-storm-accent/30 rounded-lg px-4 py-2.5 backdrop-blur-sm">
-              <span
-                className="size-2 rounded-full bg-storm-accent animate-pulse"
-                aria-hidden="true"
-              />
-              <span className="text-sm font-medium text-storm-fg italic">
-                <span className="text-storm-accent">"</span>
-                {t.quote}
-                <span className="text-storm-accent">"</span>
-              </span>
-            </div>
-            <span className="inline-flex items-center gap-1.5 text-xs text-storm-fg2">
-              <MapPin className="size-3.5 text-storm-accent" aria-hidden="true" />
-              Lima, Perú
-            </span>
-          </div>
-
-          <h1
-            className="animate-fade-up text-5xl font-bold leading-tight tracking-tight text-storm-fg sm:text-6xl"
-            style={{ animationDelay: "100ms" }}
-          >
+          <h1 className="animate-fade-up text-5xl font-bold leading-tight tracking-tight text-storm-fg sm:text-6xl">
             Josep Rivera
           </h1>
 
           <p
             className="animate-fade-up text-xl font-semibold text-storm-accent sm:text-2xl"
-            style={{ animationDelay: "200ms" }}
+            style={{ animationDelay: "100ms" }}
           >
             {t.role}
           </p>
 
           <p
             className="animate-fade-up text-base text-storm-fg2 leading-relaxed max-w-md"
-            style={{ animationDelay: "300ms" }}
+            style={{ animationDelay: "200ms" }}
           >
             {t.description}
           </p>
 
-          {/* Tech pills */}
-          <div
-            className="animate-fade-up flex flex-wrap items-center justify-center md:justify-start gap-2"
-            style={{ animationDelay: "350ms" }}
-          >
-            {techPills.map((tech) => (
-              <span
-                key={tech}
-                className="rounded-md border border-storm-border bg-storm-bg2 px-2.5 py-1 text-xs font-medium text-storm-accent2"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-
-          {/* CTAs */}
           <div
             className="animate-fade-up flex flex-wrap items-center gap-3"
-            style={{ animationDelay: "400ms" }}
+            style={{ animationDelay: "300ms" }}
           >
             <a
               href="#proyectos"
@@ -135,10 +94,9 @@ export function Hero() {
             </a>
           </div>
 
-          {/* Social links + availability */}
           <div
             className="animate-fade-up flex flex-wrap items-center justify-center md:justify-start gap-3"
-            style={{ animationDelay: "450ms" }}
+            style={{ animationDelay: "350ms" }}
           >
             <a
               href="https://github.com/JosepRivera"
@@ -163,10 +121,8 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Profile photo */}
         <div className="animate-float">
           <div className="animate-fade-scale relative shrink-0" style={{ animationDelay: "300ms" }}>
-            {/* Decorative rings */}
             <div
               className="absolute -inset-3 rounded-full border border-storm-accent/10"
               aria-hidden="true"
@@ -188,13 +144,11 @@ export function Hero() {
               />
             </div>
 
-            {/* Glow */}
             <div
               className="absolute inset-0 rounded-full blur-3xl bg-storm-accent/8 -z-10"
               aria-hidden="true"
             />
 
-            {/* Floating badge */}
             <div
               className="absolute -bottom-2 -right-2 md:-right-4 flex items-center gap-1.5 rounded-full border border-storm-border bg-storm-bg2/90 backdrop-blur-sm px-3 py-1.5 text-xs font-medium text-storm-fg2 shadow-lg"
               aria-hidden="true"

@@ -9,7 +9,7 @@ export function useInView(threshold = 0.1) {
     if (!element) return;
     const obs = new IntersectionObserver(
       ([entry]) => {
-        setInView(entry.isIntersecting);
+        setInView((prev) => prev || entry.isIntersecting);
       },
       { threshold },
     );
