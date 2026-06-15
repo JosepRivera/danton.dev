@@ -1,6 +1,6 @@
 "use client";
 
-import { Award, Clock, ExternalLink } from "lucide-react";
+import { Award, Clock, Download, ExternalLink } from "lucide-react";
 import Image from "next/image";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { SectionTitle } from "@/components/ui/SectionTitle";
@@ -18,6 +18,11 @@ const issuerConfig: Record<string, { bar: string; badge: string; dot: string }> 
     bar: "bg-sky-500/70",
     badge: "bg-sky-950/90 border-sky-500/40 text-sky-300",
     dot: "bg-sky-400",
+  },
+  DevTalles: {
+    bar: "bg-violet-500/70",
+    badge: "bg-violet-950/90 border-violet-500/40 text-violet-300",
+    dot: "bg-violet-400",
   },
 };
 
@@ -59,6 +64,7 @@ export function Certificates() {
                         src={cert.imagePath}
                         alt={`Certificado: ${cert.title}`}
                         fill
+                        priority={i < 2}
                         className="object-cover object-top group-hover:scale-[1.04] transition-transform duration-300"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
@@ -96,7 +102,7 @@ export function Certificates() {
                     )}
                   </div>
 
-                  <div className="mt-auto pt-1">
+                  <div className="mt-auto pt-1 flex flex-wrap gap-2">
                     <a
                       href={cert.url}
                       target="_blank"
@@ -106,6 +112,16 @@ export function Certificates() {
                       <ExternalLink className="size-3.5" aria-hidden="true" />
                       {t.viewCertificate}
                     </a>
+                    {cert.pdfPath && (
+                      <a
+                        href={cert.pdfPath}
+                        download
+                        className="inline-flex items-center gap-1.5 rounded-lg border border-storm-border bg-storm-bg3 px-3 py-2 text-xs font-medium text-storm-fg2 hover:border-storm-accent/50 hover:text-storm-fg hover:bg-storm-accent/5 transition-all duration-150 focus-visible:ring-2 focus-visible:ring-storm-accent focus-visible:outline-none"
+                      >
+                        <Download className="size-3.5" aria-hidden="true" />
+                        {t.downloadPdf}
+                      </a>
+                    )}
                   </div>
                 </div>
               </article>
