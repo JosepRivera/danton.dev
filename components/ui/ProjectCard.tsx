@@ -30,6 +30,7 @@ const badgeStyles = {
   done: "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20",
   wip: "bg-storm-accent/10 text-storm-accent border border-storm-accent/20",
   internship: "bg-amber-500/10 text-amber-400 border border-amber-500/20",
+  client: "bg-[#54C5F8]/10 text-[#54C5F8] border border-[#54C5F8]/20",
 };
 
 const techButtonActive: Record<string, string> = {
@@ -221,17 +222,21 @@ export function ProjectCard({ project, index, lang }: ProjectCardProps) {
             </div>
 
             <div className="flex flex-wrap items-center gap-3 mt-1">
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-md border border-storm-border bg-storm-bg3 px-3 py-1.5 text-sm font-medium text-storm-fg hover:bg-[#24292e] hover:border-[#444d56] hover:text-white transition-all duration-150"
-                aria-label={`Ver código de ${project.title} en GitHub`}
-              >
-                <GithubIcon className="size-4" />
-                {t.viewOnGithub}
-                <ExternalLink className="size-3 opacity-60" />
-              </a>
+              {project.github ? (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 rounded-md border border-storm-border bg-storm-bg3 px-3 py-1.5 text-sm font-medium text-storm-fg hover:bg-[#24292e] hover:border-[#444d56] hover:text-white transition-all duration-150"
+                  aria-label={`Ver código de ${project.title} en GitHub`}
+                >
+                  <GithubIcon className="size-4" />
+                  {t.viewOnGithub}
+                  <ExternalLink className="size-3 opacity-60" />
+                </a>
+              ) : (
+                <span className="text-xs text-storm-fg2">{t.privateRepo}</span>
+              )}
               {project.versions?.map((v) => (
                 <VersionButton
                   key={`${v.label}-${v.tech}`}
@@ -287,17 +292,21 @@ export function ProjectCard({ project, index, lang }: ProjectCardProps) {
         </div>
 
         <div className="flex flex-wrap items-center gap-2 mt-auto pt-2">
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-md border border-storm-border bg-storm-bg3 px-3 py-1.5 text-xs font-medium text-storm-fg hover:bg-[#24292e] hover:border-[#444d56] hover:text-white transition-all duration-150"
-            aria-label={`Ver código de ${project.title} en GitHub`}
-          >
-            <GithubIcon className="size-3.5" />
-            {t.viewOnGithub}
-            <ExternalLink className="size-3 opacity-60" />
-          </a>
+          {project.github ? (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-md border border-storm-border bg-storm-bg3 px-3 py-1.5 text-xs font-medium text-storm-fg hover:bg-[#24292e] hover:border-[#444d56] hover:text-white transition-all duration-150"
+              aria-label={`Ver código de ${project.title} en GitHub`}
+            >
+              <GithubIcon className="size-3.5" />
+              {t.viewOnGithub}
+              <ExternalLink className="size-3 opacity-60" />
+            </a>
+          ) : (
+            <span className="text-xs text-storm-fg2">{t.privateRepo}</span>
+          )}
           {project.versions?.map((v) => (
             <VersionButton
               key={`${v.label}-${v.tech}`}

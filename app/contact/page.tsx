@@ -4,11 +4,11 @@ import { Contact } from "@/components/sections/Contact";
 export const metadata: Metadata = {
   title: "Contact — Josep Rivera",
   description:
-    "Get in touch with Josep Rivera, Backend Developer. Available for projects and internships.",
+    "Get in touch with Josep Rivera, Full Stack Developer. Available for projects and internships.",
   openGraph: {
     title: "Contact — Josep Rivera",
     description:
-      "Get in touch with Josep Rivera, Backend Developer. Available for projects and internships.",
+      "Get in touch with Josep Rivera, Full Stack Developer. Available for projects and internships.",
   },
 };
 

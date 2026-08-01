@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowDown, Mail } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import Image from "next/image";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { translations } from "@/lib/i18n";
@@ -54,7 +54,7 @@ export function Hero() {
       className="relative flex min-h-screen items-center px-6 pt-20"
       aria-label={t.ariaLabel}
     >
-      <div className="mx-auto flex w-full max-w-5xl flex-col-reverse items-center gap-12 py-20 md:flex-row md:justify-between">
+      <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-12 py-20 md:flex-row md:justify-between">
         <div className="flex flex-col items-center gap-5 text-center md:items-start md:text-left md:max-w-lg">
           <h1 className="animate-fade-up text-5xl font-bold leading-tight tracking-tight text-storm-fg sm:text-6xl">
             Josep Rivera
@@ -86,10 +86,12 @@ export function Hero() {
               {t.seeProjects}
             </a>
             <a
-              href="#contacto"
+              href="https://www.linkedin.com/in/rivera-josep"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-lg border border-storm-border px-5 py-2.5 text-sm font-semibold text-storm-fg2 hover:border-storm-accent/40 hover:text-storm-fg hover:-translate-y-0.5 transition-all duration-150 focus-visible:ring-2 focus-visible:ring-storm-accent focus-visible:outline-none"
             >
-              <Mail className="size-4" />
+              <LinkedinIcon className="size-4" />
               {t.contact}
             </a>
           </div>
@@ -107,55 +109,36 @@ export function Hero() {
             >
               <GithubIcon className="size-5" />
             </a>
-            <a
-              href="https://www.linkedin.com/in/rivera-josep"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-storm-fg2 hover:text-storm-fg transition-colors duration-150"
-              aria-label="LinkedIn de Josep Rivera"
-            >
-              <LinkedinIcon className="size-5" />
-            </a>
             <span className="h-4 w-px bg-storm-border" aria-hidden="true" />
             <span className="text-xs text-storm-fg2">{t.availability}</span>
           </div>
         </div>
 
-        <div className="animate-float">
-          <div className="animate-fade-scale relative shrink-0" style={{ animationDelay: "300ms" }}>
-            <div
-              className="absolute -inset-3 rounded-full border border-storm-accent/10"
-              aria-hidden="true"
+        <div
+          className="animate-fade-scale flex shrink-0 flex-col items-center gap-7 md:items-end"
+          style={{ animationDelay: "300ms" }}
+        >
+          <div className="relative size-36 sm:size-40">
+            <div className="absolute inset-0 rounded-full bg-storm-accent/10 ring-2 ring-storm-accent/20" />
+            <Image
+              src="/images/profile.jpg"
+              alt={t.photoAlt}
+              fill
+              className="rounded-full object-cover"
+              priority
+              sizes="160px"
             />
-            <div
-              className="absolute -inset-6 rounded-full border border-storm-accent/5"
-              aria-hidden="true"
-            />
+          </div>
 
-            <div className="relative size-52 sm:size-60 md:size-68">
-              <div className="absolute inset-0 rounded-full bg-storm-accent/10 ring-2 ring-storm-accent/20" />
-              <Image
-                src="/images/profile.jpg"
-                alt="Foto de perfil de Josep Rivera"
-                fill
-                className="rounded-full object-cover"
-                priority
-                sizes="(max-width: 768px) 208px, 272px"
-              />
-            </div>
-
-            <div
-              className="absolute inset-0 rounded-full blur-3xl bg-storm-accent/8 -z-10"
-              aria-hidden="true"
-            />
-
-            <div
-              className="absolute -bottom-2 -right-2 md:-right-4 flex items-center gap-1.5 rounded-full border border-storm-border bg-storm-bg2/90 backdrop-blur-sm px-3 py-1.5 text-xs font-medium text-storm-fg2 shadow-lg"
-              aria-hidden="true"
-            >
-              <span className="size-2 rounded-full bg-storm-accent animate-pulse" />
-              Backend Dev
-            </div>
+          <div className="grid grid-cols-2 gap-x-8 gap-y-5 text-center md:text-right">
+            {t.stats.map((stat) => (
+              <div key={stat.label} className="flex flex-col">
+                <span className="text-2xl font-bold tabular-nums text-storm-fg sm:text-3xl">
+                  {stat.value}
+                </span>
+                <span className="mt-1 text-xs leading-snug text-storm-fg2">{stat.label}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

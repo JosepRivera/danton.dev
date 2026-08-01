@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, Download, Mail } from "lucide-react";
+import { ArrowUpRight, Mail } from "lucide-react";
 import type { ElementType } from "react";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { translations } from "@/lib/i18n";
@@ -165,19 +165,6 @@ export function Contact() {
           })}
         </div>
 
-        <div
-          className={`flex justify-center transition-all duration-300 ease-out ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
-          style={{ transitionDelay: inView ? "400ms" : "0ms" }}
-        >
-          <a
-            href="/Josep_Rivera_CV.pdf"
-            download
-            className="group relative px-6 py-3 rounded-xl border border-storm-accent/30 bg-storm-accent/5 text-storm-fg font-medium hover:bg-storm-accent/10 hover:border-storm-accent/60 transition-all duration-500 ease-out hover:-translate-y-0.5 flex items-center gap-2 justify-center w-full sm:w-auto shadow-[0_0_20px_-8px_rgba(104,136,200,0.3)] hover:shadow-[0_0_28px_-4px_rgba(104,136,200,0.4)]"
-          >
-            <Download className="size-4" />
-            {t.downloadCv}
-          </a>
-        </div>
       </div>
     </section>
   );

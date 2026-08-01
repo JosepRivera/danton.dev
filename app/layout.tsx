@@ -15,28 +15,34 @@ const syne = Syne({
 });
 
 export const metadata: Metadata = {
-  title: "Josep Rivera — Backend Developer",
+  title: "Josep Rivera — Full Stack Developer",
   description:
-    "Backend developer con experiencia en NestJS, FastAPI, Python y Docker. Construyo APIs escalables, integro IA generativa en flujos reales y entrego sistemas que otros pueden mantener. Disponible para proyectos y prácticas.",
+    "Desarrollador Full Stack. Construyo sistemas completos, del modelo de datos al despliegue: NestJS, FastAPI, React y Flutter. Abierto a proyectos y prácticas.",
   verification: {
     google: "Ls50ORBgEyXDdxgKbW0msmqIeKzZPPaOUwnhPt4NGZc",
   },
   keywords: [
+    "full stack developer",
+    "desarrollador full stack",
     "backend developer",
+    "desarrollador backend",
     "NestJS",
     "FastAPI",
     "Python",
     "Node.js",
-    "Docker",
     "TypeScript",
+    "React",
+    "Next.js",
+    "Flutter",
+    "Kotlin",
+    "Docker",
     "APIs REST",
-    "desarrollador backend",
     "Peru",
     "Lima",
     "Tecsup",
     "PostgreSQL",
+    "Prisma",
     "inteligencia artificial",
-    "Flutter",
     "Josep Rivera",
   ],
   authors: [{ name: "Josep Danton Rivera Munarez" }],
@@ -45,9 +51,9 @@ export const metadata: Metadata = {
     icon: [{ url: "/favicon.ico", sizes: "any" }],
   },
   openGraph: {
-    title: "Josep Rivera — Backend Developer",
+    title: "Josep Rivera — Full Stack Developer",
     description:
-      "Backend developer con experiencia en NestJS, FastAPI y Docker. Construyo APIs escalables e integro IA en proyectos reales. Lima, Perú.",
+      "Desarrollador Full Stack. Construyo sistemas completos, del modelo de datos al despliegue: NestJS, FastAPI, React y Flutter. Lima, Perú.",
     type: "website",
     locale: "es_PE",
     siteName: "Josep Rivera Portfolio",
@@ -55,9 +61,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Josep Rivera — Backend Developer",
+    title: "Josep Rivera — Full Stack Developer",
     description:
-      "Backend developer en NestJS, FastAPI y Docker. APIs escalables + IA en flujos reales. Lima, Perú.",
+      "Desarrollador Full Stack. Del modelo de datos al despliegue: NestJS, FastAPI, React y Flutter. Lima, Perú.",
     creator: "@JosepRivera",
   },
   robots: {
@@ -76,7 +82,7 @@ const jsonLd = {
   name: "Josep Rivera",
   givenName: "Josep",
   familyName: "Rivera",
-  jobTitle: "Backend Developer",
+  jobTitle: "Full Stack Developer",
   url: "https://rivera-dev.vercel.app",
   image: "https://rivera-dev.vercel.app/images/profile.jpg",
   email: "josepdanton1518@gmail.com",

@@ -1,6 +1,6 @@
 "use client";
 
-import { Download, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { translations } from "@/lib/i18n";
@@ -135,16 +135,6 @@ export function Nav() {
               EN
             </button>
           </div>
-
-          {/* CV button — always visible */}
-          <a
-            href="/Josep_Rivera_CV.pdf"
-            download
-            className="inline-flex items-center gap-1.5 rounded-lg border border-storm-accent/40 bg-storm-accent/10 px-3.5 py-2 text-sm font-medium text-storm-accent hover:bg-storm-accent/20 transition-colors duration-150"
-          >
-            <Download className="size-3.5" />
-            <span className="hidden sm:inline">{t.downloadCv}</span>
-          </a>
 
           {/* Mobile menu button */}
           <button

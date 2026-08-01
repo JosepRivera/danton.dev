@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Josep Rivera — Backend Developer · NestJS · FastAPI · Lima, Perú";
+export const alt = "Josep Rivera — Full Stack Developer · NestJS · FastAPI · Lima, Perú";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -69,7 +69,7 @@ export default function Image() {
 
         {/* Title */}
         <div style={{ color: "#6888c8", fontSize: "28px", fontWeight: "600" }}>
-          Backend Developer
+          Full Stack Developer
         </div>
 
         {/* Stack pills */}

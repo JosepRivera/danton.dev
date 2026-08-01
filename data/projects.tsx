@@ -17,8 +17,8 @@ export interface Project {
   stack: string[];
   badge: string;
   badgeEn: string;
-  badgeVariant: "done" | "wip" | "internship";
-  github: string;
+  badgeVariant: "done" | "wip" | "internship" | "client";
+  github?: string;
   accentColor: string;
   featured?: boolean;
   deployedUrl?: string;
@@ -83,6 +83,44 @@ export const projects: Project[] = [
         repoUrl: "https://github.com/JosepRivera/overload-mobile",
       },
     ],
+  },
+  {
+    title: "FRK Outdoors",
+    description: (
+      <>
+        App móvil para <span className="text-[#54C5F8] font-medium">operadores de campo</span> que
+        gestionan <span className="text-[#54C5F8] font-medium">activos publicitarios</span>.
+      </>
+    ),
+    detail: (
+      <>
+        Los operadores <span className="text-[#54C5F8] font-medium">registran incidencias</span> y
+        consultan el <span className="text-[#54C5F8] font-medium">estado de cada estructura</span>{" "}
+        desde el celular. Las consultas están optimizadas para responder en{" "}
+        <span className="text-[#54C5F8] font-medium">menos de 3 segundos</span>, el requisito de
+        rendimiento definido. Lo desarrollamos dos personas con Scrum y sprints de 4 semanas.
+      </>
+    ),
+    descriptionEn: (
+      <>
+        Mobile app for <span className="text-[#54C5F8] font-medium">field operators</span> who
+        manage <span className="text-[#54C5F8] font-medium">advertising assets</span>.
+      </>
+    ),
+    detailEn: (
+      <>
+        Operators <span className="text-[#54C5F8] font-medium">log incidents</span> and{" "}
+        <span className="text-[#54C5F8] font-medium">check the status of each structure</span> from
+        their phone. Queries are optimized to respond in{" "}
+        <span className="text-[#54C5F8] font-medium">under 3 seconds</span>, the defined performance
+        requirement. Built by two developers with Scrum and 4-week sprints.
+      </>
+    ),
+    stack: ["Flutter", "Dart", "Scrum"],
+    badge: "Freelance · Entregado",
+    badgeEn: "Freelance · Delivered",
+    badgeVariant: "client",
+    accentColor: "#54C5F8",
   },
   {
     title: "Tecsup Inventory",
