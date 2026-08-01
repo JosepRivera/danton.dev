@@ -6,6 +6,7 @@ import type { Lang } from "@/lib/i18n";
 import { translations } from "@/lib/i18n";
 import { useInView } from "@/lib/use-in-view";
 import { cn } from "@/lib/utils";
+import { getTechMeta } from "./tech-meta";
 
 function GithubIcon({ className }: { className?: string }) {
   return (
@@ -107,64 +108,36 @@ interface ProjectCardProps {
   lang: Lang;
 }
 
-function ProjectVisual({ project }: { project: Project }) {
+function initials(title: string) {
+  return title
+    .split(" ")
+    .map((w) => w[0])
+    .join("")
+    .slice(0, 2);
+}
+
+/** Stack chip tinted with the vendor's own identity color, per the design
+ *  system's brand-hex exemption. Techs with no registered brand fall back to
+ *  the neutral storm chip rather than inventing one. */
+function TechChip({ tech }: { tech: string }) {
+  const { Icon, color } = getTechMeta(tech);
+
+  if (!color) {
+    return (
+      <span className="inline-flex items-center gap-1.5 rounded-md border border-storm-border bg-storm-bg3 px-2 py-1 text-xs font-medium text-storm-accent2">
+        {tech}
+      </span>
+    );
+  }
+
   return (
-    <div
-      className="relative w-full h-full overflow-hidden"
-      style={{
-        background: `linear-gradient(135deg, ${project.accentColor}18 0%, transparent 60%)`,
-      }}
-      aria-hidden="true"
+    <span
+      className="inline-flex items-center gap-1.5 rounded-md border px-2 py-1 text-xs font-medium text-storm-fg"
+      style={{ backgroundColor: `${color}14`, borderColor: `${color}40` }}
     >
-      <svg
-        className="absolute inset-0 w-full h-full opacity-20"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-      >
-        <defs>
-          <pattern
-            id={`grid-${project.title}`}
-            width="24"
-            height="24"
-            patternUnits="userSpaceOnUse"
-          >
-            <path
-              d="M 24 0 L 0 0 0 24"
-              fill="none"
-              stroke={project.accentColor}
-              strokeWidth="0.5"
-            />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill={`url(#grid-${project.title})`} />
-      </svg>
-
-      <div
-        className="absolute -top-8 -right-8 size-32 rounded-full opacity-20 blur-2xl"
-        style={{ backgroundColor: project.accentColor }}
-      />
-      <div
-        className="absolute bottom-4 left-4 size-16 rounded-full opacity-10 blur-xl"
-        style={{ backgroundColor: project.accentColor }}
-      />
-
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div
-          className="flex items-center justify-center size-14 rounded-2xl border text-xl font-bold font-heading opacity-60"
-          style={{
-            borderColor: `${project.accentColor}40`,
-            backgroundColor: `${project.accentColor}15`,
-            color: project.accentColor,
-          }}
-        >
-          {project.title
-            .split(" ")
-            .map((w) => w[0])
-            .join("")
-            .slice(0, 2)}
-        </div>
-      </div>
-    </div>
+      {Icon ? <Icon size={13} /> : <span className="size-2 rounded-full" style={{ backgroundColor: color }} />}
+      {tech}
+    </span>
   );
 }
 
@@ -179,120 +152,56 @@ export function ProjectCard({ project, index, lang }: ProjectCardProps) {
   const animClass = inView ? "animate-fade-up" : "opacity-0";
   const delay = { animationDelay: `${index * 150}ms` };
 
-  if (project.featured) {
-    return (
-      <article
-        ref={ref}
-        className={`col-span-full rounded-2xl border border-storm-border bg-storm-bg2 overflow-hidden hover:border-storm-accent/30 transition-[border-color] duration-200 group ${animClass}`}
-        style={delay}
-      >
-        <div className="grid md:grid-cols-5">
-          <div className="md:col-span-2 h-48 md:h-auto min-h-50">
-            <ProjectVisual project={project} />
-          </div>
-
-          <div className="md:col-span-3 flex flex-col gap-4 p-6 md:p-8">
-            <div className="flex items-start justify-between gap-3">
-              <div>
-                <p className="text-xs font-medium text-storm-fg2 uppercase tracking-wider mb-1">
-                  {t.featured}
-                </p>
-                <h3 className="text-xl font-bold font-heading text-storm-fg leading-tight">
-                  {project.title}
-                </h3>
-              </div>
-              <span
-                className={cn(
-                  "shrink-0 rounded-full px-2.5 py-0.5 text-xs font-medium",
-                  badgeStyles[project.badgeVariant],
-                )}
-              >
-                {badge}
-              </span>
-            </div>
-
-            <p className="text-sm text-storm-fg2 leading-relaxed font-medium">{description}</p>
-            <p className="text-sm text-storm-fg2 leading-relaxed">{detail}</p>
-
-            <div className="flex flex-wrap gap-2 pt-2">
-              {project.stack.map((tech) => (
-                <span
-                  key={tech}
-                  className="rounded-md bg-storm-bg3 px-2 py-0.5 text-xs font-medium text-storm-accent2 border border-storm-border"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-
-            <div className="flex flex-wrap items-center gap-3 mt-1">
-              {project.github ? (
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 rounded-md border border-storm-border bg-storm-bg3 px-3 py-1.5 text-sm font-medium text-storm-fg hover:bg-[#24292e] hover:border-[#444d56] hover:text-white transition-[background-color,border-color,color] duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-storm-accent"
-                  aria-label={t.viewCodeAria.replace("{project}", project.title)}
-                >
-                  <GithubIcon className="size-4" />
-                  {t.viewOnGithub}
-                  <ExternalLink className="size-3 opacity-60" />
-                </a>
-              ) : (
-                <span className="text-xs text-storm-fg2">{t.privateRepo}</span>
-              )}
-              {project.versions?.map((v) => (
-                <VersionButton
-                  key={`${v.label}-${v.tech}`}
-                  version={v}
-                  size="sm"
-                  comingSoonLabel={t.comingSoon}
-                  ariaTemplate={t.viewVersionAria}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </article>
-    );
-  }
-
   return (
     <article
       ref={ref}
       className={`group flex flex-col rounded-xl border border-storm-border bg-storm-bg2 overflow-hidden hover:border-storm-accent/30 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-8px_rgba(104,136,200,0.12)] transition-[border-color,transform,box-shadow] duration-200 ease-out ${animClass}`}
       style={delay}
     >
-      <div className="h-52 w-full">
-        <ProjectVisual project={project} />
+      {/* Per-project identity now lives in a hairline bar and the monogram
+          tile rather than a 13rem decorative panel, so all four cards read
+          as one uniform row instead of competing for size. */}
+      <div className="h-0.5 w-full" style={{ backgroundColor: project.accentColor }} />
+
+      <div
+        className="flex items-center gap-3 border-b border-storm-border p-5"
+        style={{
+          background: `linear-gradient(135deg, ${project.accentColor}14 0%, transparent 70%)`,
+        }}
+      >
+        <span
+          className="flex size-10 shrink-0 items-center justify-center rounded-xl border font-heading text-sm font-bold"
+          style={{
+            borderColor: `${project.accentColor}40`,
+            backgroundColor: `${project.accentColor}15`,
+            color: project.accentColor,
+          }}
+          aria-hidden="true"
+        >
+          {initials(project.title)}
+        </span>
+
+        <h3 className="min-w-0 flex-1 font-heading text-base font-semibold leading-tight text-storm-fg">
+          {project.title}
+        </h3>
+
+        <span
+          className={cn(
+            "shrink-0 rounded-full px-2.5 py-0.5 text-xs font-medium",
+            badgeStyles[project.badgeVariant],
+          )}
+        >
+          {badge}
+        </span>
       </div>
 
       <div className="flex flex-col gap-3 p-5 flex-1">
-        <div className="flex items-start justify-between gap-3">
-          <h3 className="text-base font-semibold font-heading text-storm-fg leading-tight">
-            {project.title}
-          </h3>
-          <span
-            className={cn(
-              "shrink-0 rounded-full px-2.5 py-0.5 text-xs font-medium",
-              badgeStyles[project.badgeVariant],
-            )}
-          >
-            {badge}
-          </span>
-        </div>
-
         <p className="text-sm text-storm-fg2 leading-relaxed">{description}</p>
         <p className="text-sm text-storm-fg2 leading-relaxed opacity-80">{detail}</p>
 
         <div className="flex flex-wrap gap-1.5 pt-1">
           {project.stack.map((tech) => (
-            <span
-              key={tech}
-              className="rounded-md bg-storm-bg3 px-2 py-0.5 text-xs font-medium text-storm-accent2 border border-storm-border"
-            >
-              {tech}
-            </span>
+            <TechChip key={tech} tech={tech} />
           ))}
         </div>
 

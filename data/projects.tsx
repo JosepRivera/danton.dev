@@ -20,7 +20,6 @@ export interface Project {
   badgeVariant: "done" | "wip" | "internship" | "client";
   github?: string;
   accentColor: string;
-  featured?: boolean;
   deployedUrl?: string;
   versions?: ProjectVersion[];
 }
@@ -74,7 +73,6 @@ export const projects: Project[] = [
     badgeVariant: "done",
     github: "https://github.com/JosepRivera/overload-api",
     accentColor: "#6888c8",
-    featured: true,
     versions: [
       {
         label: "Mobile",

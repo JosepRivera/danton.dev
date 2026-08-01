@@ -70,7 +70,7 @@ export function Hero() {
               {t.role}
             </p>
             <p
-              className="animate-fade-up text-sm text-storm-fg2"
+              className="animate-fade-up max-w-md text-sm leading-relaxed text-storm-fg2"
               style={{ animationDelay: "150ms" }}
             >
               {t.tagline}
@@ -118,7 +118,7 @@ export function Hero() {
         </div>
 
         <div
-          className="relative size-36 shrink-0 animate-fade-scale sm:size-40"
+          className="relative size-52 shrink-0 animate-fade-scale sm:size-60"
           style={{ animationDelay: "300ms" }}
         >
           <div className="absolute inset-0 rounded-full bg-storm-accent/10 ring-2 ring-storm-accent/20" />
@@ -128,7 +128,7 @@ export function Hero() {
             fill
             className="rounded-full object-cover"
             priority
-            sizes="160px"
+            sizes="(max-width: 680px) 13rem, 15rem"
           />
         </div>
       </div>

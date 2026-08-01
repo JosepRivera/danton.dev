@@ -20,7 +20,8 @@ export const translations = {
     hero: {
       quote: "Creando software con propósito",
       role: "Full Stack Developer",
-      tagline: "Sistemas web y móviles · Lima, Perú 🇵🇪 · Último año en Tecsup",
+      tagline:
+        "+3 años programando. Técnico en Diseño y Desarrollo de Software, Lima, Perú 🇵🇪. Especializado en el desarrollo de sistemas web y móviles.",
       seeProjects: "Ver proyectos",
       contact: "Contactar por LinkedIn",
       availability: "Disponible para colaborar en proyectos y equipos de desarrollo",
@@ -62,7 +63,6 @@ export const translations = {
     projects: {
       title: "Proyectos",
       subtitle: "Cuatro proyectos reales que resolvieron problemas concretos.",
-      featured: "Proyecto destacado",
       viewOnGithub: "Ver en GitHub",
       comingSoon: "Próximamente",
       privateRepo: "Código privado · Cliente",
@@ -101,8 +101,9 @@ export const translations = {
       title: "Certificados",
       subtitle: "Cursos y certificaciones completados — más de 275 horas de formación.",
       viewCertificate: "Ver certificado",
-      downloadPdf: "Descargar PDF",
       certAlt: "Certificado: {title}",
+      closePreview: "Cerrar",
+      verifyAt: "Verificar en {issuer}",
     },
     contact: {
       title: "¿Trabajamos juntos?",
@@ -136,7 +137,8 @@ export const translations = {
     hero: {
       quote: "Building software with purpose",
       role: "Full Stack Developer",
-      tagline: "Web and mobile systems · Lima, Peru 🇵🇪 · Final year at Tecsup",
+      tagline:
+        "3+ years programming. Software Design and Development Technician, Lima, Peru 🇵🇪. Specialized in building web and mobile systems.",
       seeProjects: "See projects",
       contact: "Contact on LinkedIn",
       availability: "Available to collaborate on projects and development teams",
@@ -178,7 +180,6 @@ export const translations = {
     projects: {
       title: "Projects",
       subtitle: "Four real projects that solved concrete problems.",
-      featured: "Featured project",
       viewOnGithub: "View on GitHub",
       comingSoon: "Coming soon",
       privateRepo: "Private code · Client",
@@ -217,8 +218,9 @@ export const translations = {
       title: "Certificates",
       subtitle: "Completed courses and certifications — over 275 hours of training.",
       viewCertificate: "View certificate",
-      downloadPdf: "Download PDF",
       certAlt: "Certificate: {title}",
+      closePreview: "Close",
+      verifyAt: "Verify at {issuer}",
     },
     contact: {
       title: "Work with me?",

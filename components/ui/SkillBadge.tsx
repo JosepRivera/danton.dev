@@ -70,80 +70,51 @@ function LinearIcon({ size = 18 }: { size?: number }) {
   );
 }
 
-function UIKitIcon({ size = 18 }: { size?: number }) {
+/**
+ * Scalar, Elysia and Drizzle have no devicons entry, so they use lettered
+ * tiles in an approximation of each project's brand color.
+ */
+function LetterTile({
+  size = 18,
+  label,
+  fill,
+  fontSize,
+  textFill = "white",
+}: {
+  size?: number;
+  label: string;
+  fill: string;
+  fontSize: number;
+  textFill?: string;
+}) {
   return (
     <svg width={size} height={size} viewBox="0 0 18 18" aria-hidden="true">
-      <rect width="18" height="18" rx="4" fill="#007AFF" />
+      <rect width="18" height="18" rx="4" fill={fill} />
       <text
         x="9"
         y="13"
         textAnchor="middle"
-        fontSize="8"
+        fontSize={fontSize}
         fontWeight="bold"
-        fill="white"
+        fill={textFill}
         fontFamily="sans-serif"
       >
-        UI
+        {label}
       </text>
     </svg>
   );
 }
 
-function CoreDataIcon({ size = 18 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 18 18" aria-hidden="true">
-      <rect width="18" height="18" rx="4" fill="#FF6B00" />
-      <text
-        x="9"
-        y="13"
-        textAnchor="middle"
-        fontSize="7"
-        fontWeight="bold"
-        fill="white"
-        fontFamily="sans-serif"
-      >
-        CD
-      </text>
-    </svg>
-  );
+function ElysiaIcon({ size = 18 }: { size?: number }) {
+  return <LetterTile size={size} label="E" fill="#8B5CF6" fontSize={11} />;
 }
 
-function SwiftDataIcon({ size = 18 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 18 18" aria-hidden="true">
-      <rect width="18" height="18" rx="4" fill="#FF3B30" />
-      <text
-        x="9"
-        y="13"
-        textAnchor="middle"
-        fontSize="7"
-        fontWeight="bold"
-        fill="white"
-        fontFamily="sans-serif"
-      >
-        SD
-      </text>
-    </svg>
-  );
+function DrizzleIcon({ size = 18 }: { size?: number }) {
+  return <LetterTile size={size} label="D" fill="#C5F74F" fontSize={11} textFill="#0e1018" />;
 }
 
-function ScrumIcon({ size = 18 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 18 18" aria-hidden="true">
-      <rect width="18" height="18" rx="4" fill="#009FDA" />
-      <text
-        x="9"
-        y="13"
-        textAnchor="middle"
-        fontSize="11"
-        fontWeight="bold"
-        fill="white"
-        fontFamily="sans-serif"
-      >
-        S
-      </text>
-    </svg>
-  );
+function ScalarIcon({ size = 18 }: { size?: number }) {
+  return <LetterTile size={size} label="S" fill="#3B82F6" fontSize={11} />;
 }
 
 /** Express needs a light wrapper since its icon is black */
@@ -184,6 +155,7 @@ type IconFC = FC<{ size?: number }>;
 const iconMap: Record<string, IconFC> = {
   nestjs: NestjsOriginal as IconFC,
   fastapi: FastapiOriginal as IconFC,
+  elysia: ElysiaIcon,
   fastify: FastifyOriginal as IconFC,
   nodejs: NodejsOriginal as IconFC,
   express: ExpressWrapper,
@@ -198,18 +170,20 @@ const iconMap: Record<string, IconFC> = {
   sqlite: SqliteOriginal as IconFC,
   oracle: OracleOriginal as IconFC,
   redis: RedisOriginal as IconFC,
-  coredata: CoreDataIcon,
-  swiftdata: SwiftDataIcon,
+  drizzle: DrizzleIcon,
+  coredata: SwiftOriginal as IconFC,
+  swiftdata: SwiftOriginal as IconFC,
   docker: DockerOriginal as IconFC,
   git: GitOriginal as IconFC,
   azuredevops: AzuredevopsOriginal as IconFC,
   linux: LinuxOriginal as IconFC,
   zod: ZodIcon,
   swagger: SwaggerOriginal as IconFC,
+  scalar: ScalarIcon,
   flutter: FlutterOriginal as IconFC,
   svelte: SvelteOriginal as IconFC,
   swiftui: SwiftOriginal as IconFC,
-  uikit: UIKitIcon,
+  uikit: SwiftOriginal as IconFC,
   jetpackcompose: JetpackcomposeOriginal as IconFC,
   mysql: MysqlOriginal as IconFC,
   php: PhpOriginal as IconFC,
@@ -232,7 +206,6 @@ const iconMap: Record<string, IconFC> = {
   bun: BunOriginal as IconFC,
   yarn: YarnOriginal as IconFC,
   linear: LinearIcon,
-  scrum: ScrumIcon,
 };
 
 interface SkillBadgeProps {
