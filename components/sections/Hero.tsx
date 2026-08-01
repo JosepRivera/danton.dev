@@ -80,7 +80,7 @@ export function Hero() {
           >
             <a
               href="#proyectos"
-              className="inline-flex items-center gap-2 rounded-lg bg-linear-to-r from-[#1a2d5c] to-[#2d4d9e] hover:from-[#1f3570] hover:to-[#3458b8] px-5 py-2.5 text-sm font-semibold text-white hover:-translate-y-0.5 transition-all duration-150 shadow-[0_0_20px_-6px_rgba(45,77,158,0.5)] hover:shadow-[0_0_24px_-4px_rgba(52,88,184,0.6)] focus-visible:ring-2 focus-visible:ring-[#3458b8] focus-visible:outline-none"
+              className="inline-flex items-center gap-2 rounded-lg bg-linear-to-r from-[#1a2d5c] to-[#2d4d9e] hover:from-[#1f3570] hover:to-[#3458b8] px-5 py-2.5 text-sm font-semibold text-white hover:-translate-y-0.5 transition-[background-image,transform,box-shadow] duration-150 shadow-[0_0_20px_-6px_rgba(45,77,158,0.5)] hover:shadow-[0_0_24px_-4px_rgba(52,88,184,0.6)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-storm-accent"
             >
               <ArrowDown className="size-4" />
               {t.seeProjects}
@@ -89,7 +89,7 @@ export function Hero() {
               href="https://www.linkedin.com/in/rivera-josep"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg border border-storm-border px-5 py-2.5 text-sm font-semibold text-storm-fg2 hover:border-storm-accent/40 hover:text-storm-fg hover:-translate-y-0.5 transition-all duration-150 focus-visible:ring-2 focus-visible:ring-storm-accent focus-visible:outline-none"
+              className="inline-flex items-center gap-2 rounded-lg border border-storm-border px-5 py-2.5 text-sm font-semibold text-storm-fg2 hover:border-storm-accent/40 hover:text-storm-fg hover:-translate-y-0.5 transition-[border-color,color,transform] duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-storm-accent"
             >
               <LinkedinIcon className="size-4" />
               {t.contact}
@@ -104,8 +104,8 @@ export function Hero() {
               href="https://github.com/JosepRivera"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-storm-fg2 hover:text-storm-fg transition-colors duration-150"
-              aria-label="GitHub de Josep Rivera"
+              className="rounded-md text-storm-fg2 hover:text-storm-fg transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-storm-accent"
+              aria-label={t.githubAria}
             >
               <GithubIcon className="size-5" />
             </a>

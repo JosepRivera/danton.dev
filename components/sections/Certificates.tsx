@@ -62,7 +62,7 @@ export function Certificates() {
                     <>
                       <Image
                         src={cert.imagePath}
-                        alt={`Certificado: ${cert.title}`}
+                        alt={t.certAlt.replace("{title}", cert.title)}
                         fill
                         priority={i < 2}
                         className="object-cover object-top group-hover:scale-[1.04] transition-transform duration-300"

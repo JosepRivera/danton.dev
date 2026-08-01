@@ -52,9 +52,10 @@ interface VersionButtonProps {
   version: ProjectVersion;
   size?: "sm" | "xs";
   comingSoonLabel: string;
+  ariaTemplate: string;
 }
 
-function VersionButton({ version, size = "sm", comingSoonLabel }: VersionButtonProps) {
+function VersionButton({ version, size = "sm", comingSoonLabel, ariaTemplate }: VersionButtonProps) {
   const isActive = version.status === "done" && !!version.deployedUrl;
   const Icon = version.label === "Mobile" ? Smartphone : Globe;
   const px = size === "xs" ? "px-3 py-1.5 text-xs" : "px-3 py-1.5 text-sm";
@@ -67,12 +68,15 @@ function VersionButton({ version, size = "sm", comingSoonLabel }: VersionButtonP
         target="_blank"
         rel="noopener noreferrer"
         className={cn(
-          "inline-flex items-center gap-1.5 rounded-md border font-medium transition-all duration-150",
+          "inline-flex items-center gap-1.5 rounded-md border font-medium transition-colors duration-150",
+          "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-storm-accent",
           px,
           techButtonActive[version.tech] ??
             "border-storm-accent/40 bg-storm-accent/10 text-storm-accent hover:bg-storm-accent/20",
         )}
-        aria-label={`Ver ${version.label} (${version.tech}) de este proyecto`}
+        aria-label={ariaTemplate
+          .replace("{label}", version.label)
+          .replace("{tech}", version.tech)}
       >
         <Icon className={iconSize} />
         {version.label} · {version.tech}
@@ -227,8 +231,8 @@ export function ProjectCard({ project, index, lang }: ProjectCardProps) {
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 rounded-md border border-storm-border bg-storm-bg3 px-3 py-1.5 text-sm font-medium text-storm-fg hover:bg-[#24292e] hover:border-[#444d56] hover:text-white transition-all duration-150"
-                  aria-label={`Ver código de ${project.title} en GitHub`}
+                  className="inline-flex items-center gap-1.5 rounded-md border border-storm-border bg-storm-bg3 px-3 py-1.5 text-sm font-medium text-storm-fg hover:bg-[#24292e] hover:border-[#444d56] hover:text-white transition-[background-color,border-color,color] duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-storm-accent"
+                  aria-label={t.viewCodeAria.replace("{project}", project.title)}
                 >
                   <GithubIcon className="size-4" />
                   {t.viewOnGithub}
@@ -243,6 +247,7 @@ export function ProjectCard({ project, index, lang }: ProjectCardProps) {
                   version={v}
                   size="sm"
                   comingSoonLabel={t.comingSoon}
+                  ariaTemplate={t.viewVersionAria}
                 />
               ))}
             </div>
@@ -297,8 +302,8 @@ export function ProjectCard({ project, index, lang }: ProjectCardProps) {
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-md border border-storm-border bg-storm-bg3 px-3 py-1.5 text-xs font-medium text-storm-fg hover:bg-[#24292e] hover:border-[#444d56] hover:text-white transition-all duration-150"
-              aria-label={`Ver código de ${project.title} en GitHub`}
+              className="inline-flex items-center gap-1.5 rounded-md border border-storm-border bg-storm-bg3 px-3 py-1.5 text-xs font-medium text-storm-fg hover:bg-[#24292e] hover:border-[#444d56] hover:text-white transition-[background-color,border-color,color] duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-storm-accent"
+              aria-label={t.viewCodeAria.replace("{project}", project.title)}
             >
               <GithubIcon className="size-3.5" />
               {t.viewOnGithub}
@@ -313,6 +318,7 @@ export function ProjectCard({ project, index, lang }: ProjectCardProps) {
               version={v}
               size="xs"
               comingSoonLabel={t.comingSoon}
+              ariaTemplate={t.viewVersionAria}
             />
           ))}
         </div>

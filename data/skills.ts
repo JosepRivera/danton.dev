@@ -1,6 +1,12 @@
 export interface Skill {
   name: string;
   iconKey: string;
+  /**
+   * Short names of the shipped projects that prove this skill. Every entry in
+   * this file must carry at least one — a technology nobody can verify in a
+   * project or a certificate does not belong in this section.
+   */
+  provenBy: string[];
 }
 
 export interface SkillCategory {
@@ -12,81 +18,57 @@ export const skillCategories: SkillCategory[] = [
   {
     category: "Backend",
     skills: [
-      { name: "NestJS", iconKey: "nestjs" },
-      { name: "FastAPI", iconKey: "fastapi" },
-      { name: "Spring Boot", iconKey: "spring" },
-      { name: "Django", iconKey: "django" },
-      { name: "Laravel", iconKey: "laravel" },
-      { name: "Node.js", iconKey: "nodejs" },
-      { name: "Express", iconKey: "express" },
-      { name: "Fastify", iconKey: "fastify" },
+      { name: "NestJS", iconKey: "nestjs", provenBy: ["Overload", "SmartBite"] },
+      { name: "FastAPI", iconKey: "fastapi", provenBy: ["Tecsup Inventory"] },
     ],
   },
   {
     category: "Frontend & Mobile",
     skills: [
-      { name: "React", iconKey: "react" },
-      { name: "Next.js", iconKey: "nextjs" },
-      { name: "Flutter", iconKey: "flutter" },
-      { name: "Svelte", iconKey: "svelte" },
-      { name: "SwiftUI", iconKey: "swiftui" },
-      { name: "UIKit", iconKey: "uikit" },
-      { name: "Jetpack Compose", iconKey: "jetpackcompose" },
+      { name: "Flutter", iconKey: "flutter", provenBy: ["FRK Outdoors", "Overload", "SmartBite"] },
+      { name: "React", iconKey: "react", provenBy: ["Tecsup Inventory"] },
+      { name: "Next.js", iconKey: "nextjs", provenBy: ["SmartBite"] },
     ],
   },
   {
     category: "Lenguajes",
     skills: [
-      { name: "TypeScript", iconKey: "typescript" },
-      { name: "Python", iconKey: "python" },
-      { name: "Java", iconKey: "java" },
-      { name: "Kotlin", iconKey: "kotlin" },
-      { name: "Dart", iconKey: "dart" },
-      { name: "Swift", iconKey: "swift" },
-      { name: "PHP", iconKey: "php" },
+      {
+        name: "TypeScript",
+        iconKey: "typescript",
+        provenBy: ["Overload", "Tecsup Inventory", "SmartBite"],
+      },
+      { name: "Python", iconKey: "python", provenBy: ["Tecsup Inventory"] },
+      { name: "Kotlin", iconKey: "kotlin", provenBy: ["SmartBite"] },
+      { name: "Dart", iconKey: "dart", provenBy: ["FRK Outdoors"] },
     ],
   },
   {
     category: "Bases de datos & ORM",
     skills: [
-      { name: "PostgreSQL", iconKey: "postgresql" },
-      { name: "MySQL", iconKey: "mysql" },
-      { name: "MongoDB", iconKey: "mongodb" },
-      { name: "Prisma", iconKey: "prisma" },
-      { name: "SQLite", iconKey: "sqlite" },
-      { name: "Oracle", iconKey: "oracle" },
-      { name: "Redis", iconKey: "redis" },
-      { name: "CoreData", iconKey: "coredata" },
-      { name: "Swift Data", iconKey: "swiftdata" },
+      { name: "PostgreSQL", iconKey: "postgresql", provenBy: ["Overload", "SmartBite"] },
+      { name: "Prisma", iconKey: "prisma", provenBy: ["Overload", "SmartBite"] },
+      { name: "SQLite", iconKey: "sqlite", provenBy: ["Tecsup Inventory"] },
     ],
   },
   {
     category: "DevOps & Cloud",
     skills: [
-      { name: "Docker", iconKey: "docker" },
-      { name: "AWS", iconKey: "aws" },
-      { name: "Azure", iconKey: "azure" },
-      { name: "Git", iconKey: "git" },
-      { name: "Azure DevOps", iconKey: "azuredevops" },
-      { name: "Linux", iconKey: "linux" },
+      { name: "Docker", iconKey: "docker", provenBy: ["Overload", "SmartBite"] },
+      {
+        name: "Git",
+        iconKey: "git",
+        provenBy: ["Overload", "Tecsup Inventory", "SmartBite"],
+      },
     ],
   },
   {
-    category: "Herramientas & Tooling",
+    category: "Calidad & Proceso",
     skills: [
-      { name: "BiomeJS", iconKey: "biome" },
-      { name: "Vite", iconKey: "vite" },
-      { name: "Vitest", iconKey: "vitest" },
-      { name: "Jest", iconKey: "jest" },
-      { name: "pnpm", iconKey: "pnpm" },
-      { name: "Zod", iconKey: "zod" },
-      { name: "Swagger", iconKey: "swagger" },
-      { name: "Linear", iconKey: "linear" },
-      { name: "GitHub", iconKey: "github" },
-      { name: "npm", iconKey: "npm" },
-      { name: "Bun", iconKey: "bun" },
-      { name: "Yarn", iconKey: "yarn" },
-      { name: "Scrum", iconKey: "scrum" },
+      { name: "Vitest", iconKey: "vitest", provenBy: ["Overload"] },
+      { name: "Zod", iconKey: "zod", provenBy: ["Overload"] },
+      { name: "Swagger", iconKey: "swagger", provenBy: ["Overload"] },
+      { name: "Scrum", iconKey: "scrum", provenBy: ["FRK Outdoors"] },
     ],
   },
 ];

@@ -66,14 +66,21 @@ export function Nav() {
           : "bg-storm-bg/0 border-transparent",
       )}
     >
+      <a
+        href="#contenido"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-6 focus:top-4 focus:z-50 focus:rounded-lg focus:border focus:border-storm-border focus:bg-storm-bg2 focus:px-4 focus:py-2 focus:text-sm focus:text-storm-fg"
+      >
+        {t.skipToContent}
+      </a>
+
       <nav
         className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4"
-        aria-label="Navegación principal"
+        aria-label={t.mainNav}
       >
         {/* JR monogram logo */}
         <a
           href="#hero"
-          className="group flex items-center gap-px focus-visible:outline-none"
+          className="group flex items-center gap-px rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-storm-accent"
           aria-label={t.goHome}
         >
           <span className="flex items-center justify-center size-9 rounded-lg border border-storm-border bg-storm-bg2 group-hover:border-storm-accent/40 transition-colors duration-200">
@@ -94,6 +101,7 @@ export function Nav() {
                   href={link.href}
                   className={cn(
                     "px-3 py-1.5 text-sm rounded-md transition-colors duration-150 border",
+                    "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-storm-accent",
                     isActive
                       ? "text-storm-fg bg-storm-bg3 border-storm-border"
                       : "text-storm-fg2 border-transparent hover:text-storm-fg hover:bg-storm-bg3/50",
@@ -153,7 +161,9 @@ export function Nav() {
       <div
         className={cn(
           "md:hidden border-storm-border bg-storm-bg2/95 backdrop-blur-md overflow-hidden transition-all duration-200",
-          menuOpen ? "max-h-96 opacity-100 border-t" : "max-h-0 opacity-0",
+          // `invisible` is what actually pulls the collapsed links out of the tab
+          // order — max-height alone leaves them focusable and off-screen.
+          menuOpen ? "max-h-96 opacity-100 border-t visible" : "max-h-0 opacity-0 invisible",
         )}
       >
         <ul className="flex flex-col px-6 py-4 gap-1">
@@ -165,7 +175,8 @@ export function Nav() {
                   href={link.href}
                   onClick={handleLinkClick}
                   className={cn(
-                    "block py-2.5 text-sm transition-colors",
+                    "block py-2.5 text-sm transition-colors rounded-md",
+                    "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-storm-accent",
                     isActive
                       ? "text-storm-accent font-medium"
                       : "text-storm-fg2 hover:text-storm-accent",

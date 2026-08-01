@@ -126,7 +126,7 @@ export function Contact() {
                   href={link.href}
                   target={link.label !== "Email" ? "_blank" : undefined}
                   rel={link.label !== "Email" ? "noopener noreferrer" : undefined}
-                  className="group relative flex flex-col h-full p-6 rounded-2xl border border-storm-border bg-linear-to-br from-storm-bg2 to-storm-bg overflow-hidden hover:border-storm-accent/50 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_-4px_rgba(104,136,200,0.2)] transition-[transform,border-color,box-shadow,background-color] duration-500 ease-out"
+                  className="group relative flex flex-col h-full p-6 rounded-2xl border border-storm-border bg-linear-to-br from-storm-bg2 to-storm-bg overflow-hidden hover:border-storm-accent/50 hover:-translate-y-0.5 hover:shadow-[0_4px_16px_-4px_rgba(104,136,200,0.2)] transition-[transform,border-color,box-shadow,background-color] duration-500 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-storm-accent"
                   aria-label={`${t.contactBy} ${link.label}`}
                 >
                   <div

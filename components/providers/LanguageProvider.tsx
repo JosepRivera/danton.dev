@@ -26,6 +26,12 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
+  // Screen readers pick the speech synthesizer from this attribute, so it has to
+  // follow the toggle — otherwise the English page is read by a Spanish voice.
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
+
   const setLang = (newLang: Lang) => {
     setLangState(newLang);
     localStorage.setItem("portfolio-lang", newLang);

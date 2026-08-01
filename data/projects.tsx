@@ -225,9 +225,9 @@ export const projects: Project[] = [
       "Docker",
       "Flutter",
     ],
-    badge: "En desarrollo",
-    badgeEn: "In development",
-    badgeVariant: "wip",
+    badge: "Freelance · En producción",
+    badgeEn: "Freelance · In production",
+    badgeVariant: "client",
     github: "https://github.com/JosepRivera/smartbite-api",
     accentColor: "#10b981",
     versions: [

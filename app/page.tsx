@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <>
       <Nav />
-      <main className="relative">
+      <main id="contenido" className="relative">
         {/* Decorative background orbs */}
         <div aria-hidden="true" className="pointer-events-none fixed inset-0 overflow-hidden -z-10">
           {/* Top-right accent glow */}

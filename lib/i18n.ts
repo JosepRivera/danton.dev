@@ -14,6 +14,8 @@ export const translations = {
       goHome: "Ir al inicio",
       openMenu: "Abrir menú",
       closeMenu: "Cerrar menú",
+      mainNav: "Navegación principal",
+      skipToContent: "Saltar al contenido",
     },
     hero: {
       quote: "Creando software con propósito",
@@ -25,6 +27,7 @@ export const translations = {
       availability: "Disponible para colaborar en proyectos y equipos de desarrollo",
       ariaLabel: "Presentación",
       photoAlt: "Foto de perfil de Josep Rivera",
+      githubAria: "GitHub de Josep Rivera",
       stats: [
         { value: "2", label: "clientes freelance" },
         { value: "5 000+", label: "activos gestionados" },
@@ -69,15 +72,18 @@ export const translations = {
       viewOnGithub: "Ver en GitHub",
       comingSoon: "Próximamente",
       privateRepo: "Código privado · Cliente",
+      viewVersionAria: "Ver {label} ({tech}) de este proyecto",
+      viewCodeAria: "Ver código de {project} en GitHub",
     },
     skills: {
       title: "Skills",
-      subtitle: "Tecnologías que he usado a lo largo de mi carrera y proyectos.",
+      subtitle: "Cada tecnología de esta lista está en al menos uno de los proyectos de arriba.",
       categoryMap: {
         Lenguajes: "Lenguajes",
         "Bases de datos & ORM": "Bases de datos & ORM",
-        "Herramientas & Tooling": "Herramientas & Tooling",
+        "Calidad & Proceso": "Calidad & Proceso",
       } as Record<string, string>,
+      provenByLabel: "Usado en",
     },
     experience: {
       title: "Formación & Experiencia",
@@ -103,6 +109,7 @@ export const translations = {
       subtitle: "Cursos y certificaciones completados — más de 275 horas de formación.",
       viewCertificate: "Ver certificado",
       downloadPdf: "Descargar PDF",
+      certAlt: "Certificado: {title}",
     },
     contact: {
       title: "¿Trabajamos juntos?",
@@ -130,6 +137,8 @@ export const translations = {
       goHome: "Go to homepage",
       openMenu: "Open menu",
       closeMenu: "Close menu",
+      mainNav: "Main navigation",
+      skipToContent: "Skip to content",
     },
     hero: {
       quote: "Building software with purpose",
@@ -141,6 +150,7 @@ export const translations = {
       availability: "Available to collaborate on projects and development teams",
       ariaLabel: "Introduction",
       photoAlt: "Profile photo of Josep Rivera",
+      githubAria: "Josep Rivera on GitHub",
       stats: [
         { value: "2", label: "freelance clients" },
         { value: "5,000+", label: "assets managed" },
@@ -185,15 +195,18 @@ export const translations = {
       viewOnGithub: "View on GitHub",
       comingSoon: "Coming soon",
       privateRepo: "Private code · Client",
+      viewVersionAria: "View the {label} ({tech}) version of this project",
+      viewCodeAria: "View the source code for {project} on GitHub",
     },
     skills: {
       title: "Skills",
-      subtitle: "Technologies I've used throughout my career and projects.",
+      subtitle: "Every technology on this list ships in at least one of the projects above.",
       categoryMap: {
         Lenguajes: "Languages",
         "Bases de datos & ORM": "Databases & ORM",
-        "Herramientas & Tooling": "Tools & Tooling",
+        "Calidad & Proceso": "Quality & Process",
       } as Record<string, string>,
+      provenByLabel: "Used in",
     },
     experience: {
       title: "Education & Experience",
@@ -219,6 +232,7 @@ export const translations = {
       subtitle: "Completed courses and certifications — over 275 hours of training.",
       viewCertificate: "View certificate",
       downloadPdf: "Download PDF",
+      certAlt: "Certificate: {title}",
     },
     contact: {
       title: "Work with me?",
