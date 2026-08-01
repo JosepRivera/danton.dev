@@ -60,12 +60,22 @@ export function Hero() {
             Josep Rivera
           </h1>
 
-          <p
-            className="animate-fade-up text-xl font-semibold text-storm-accent sm:text-2xl"
-            style={{ animationDelay: "100ms" }}
-          >
-            {t.role}
-          </p>
+          {/* Role and tagline are one group: the tagline is metadata about the
+              role, so it sits closer to it than to the description. */}
+          <div className="flex flex-col gap-2">
+            <p
+              className="animate-fade-up text-xl font-semibold text-storm-accent sm:text-2xl"
+              style={{ animationDelay: "100ms" }}
+            >
+              {t.role}
+            </p>
+            <p
+              className="animate-fade-up text-sm text-storm-fg2"
+              style={{ animationDelay: "150ms" }}
+            >
+              {t.tagline}
+            </p>
+          </div>
 
           <p
             className="animate-fade-up text-base text-storm-fg2 leading-relaxed max-w-md"

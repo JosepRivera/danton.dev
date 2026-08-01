@@ -20,6 +20,7 @@ export const translations = {
     hero: {
       quote: "Creando software con propósito",
       role: "Full Stack Developer",
+      tagline: "Sistemas web y móviles · Lima, Perú 🇵🇪 · Último año en Tecsup",
       description:
         "Construyo software para clientes finales. Hablo directo con quien lo va a usar y traduzco lo que necesita en requerimientos técnicos claros. Priorizo código mantenible sobre soluciones rápidas, y lo que el proyecto exige, lo aprendo.",
       seeProjects: "Ver proyectos",
@@ -144,6 +145,7 @@ export const translations = {
     hero: {
       quote: "Building software with purpose",
       role: "Full Stack Developer",
+      tagline: "Web and mobile systems · Lima, Peru 🇵🇪 · Final year at Tecsup",
       description:
         "I build software for real clients. I talk directly to the people who use it and turn what they need into clear technical requirements. I choose maintainable code over quick fixes, and whatever a project demands, I learn.",
       seeProjects: "See projects",
