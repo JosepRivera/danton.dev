@@ -21,20 +21,12 @@ export const translations = {
       quote: "Creando software con propósito",
       role: "Full Stack Developer",
       tagline: "Sistemas web y móviles · Lima, Perú 🇵🇪 · Último año en Tecsup",
-      description:
-        "Construyo software para clientes finales. Hablo directo con quien lo va a usar y traduzco lo que necesita en requerimientos técnicos claros. Priorizo código mantenible sobre soluciones rápidas, y lo que el proyecto exige, lo aprendo.",
       seeProjects: "Ver proyectos",
       contact: "Contactar por LinkedIn",
       availability: "Disponible para colaborar en proyectos y equipos de desarrollo",
       ariaLabel: "Presentación",
       photoAlt: "Foto de perfil de Josep Rivera",
       githubAria: "GitHub de Josep Rivera",
-      stats: [
-        { value: "2", label: "clientes freelance" },
-        { value: "5 000+", label: "activos gestionados" },
-        { value: "< 3 s", label: "respuesta de consulta" },
-        { value: "4", label: "sistemas construidos" },
-      ],
     },
     about: {
       title: "Sobre mí",
@@ -79,13 +71,12 @@ export const translations = {
     },
     skills: {
       title: "Skills",
-      subtitle: "Cada tecnología de esta lista está en al menos uno de los proyectos de arriba.",
+      subtitle: "Tecnologías que he usado a lo largo de mi carrera y proyectos.",
       categoryMap: {
         Lenguajes: "Lenguajes",
         "Bases de datos & ORM": "Bases de datos & ORM",
-        "Calidad & Proceso": "Calidad & Proceso",
+        "Herramientas & Tooling": "Herramientas & Tooling",
       } as Record<string, string>,
-      provenByLabel: "Usado en",
     },
     experience: {
       title: "Formación & Experiencia",
@@ -146,20 +137,12 @@ export const translations = {
       quote: "Building software with purpose",
       role: "Full Stack Developer",
       tagline: "Web and mobile systems · Lima, Peru 🇵🇪 · Final year at Tecsup",
-      description:
-        "I build software for real clients. I talk directly to the people who use it and turn what they need into clear technical requirements. I choose maintainable code over quick fixes, and whatever a project demands, I learn.",
       seeProjects: "See projects",
       contact: "Contact on LinkedIn",
       availability: "Available to collaborate on projects and development teams",
       ariaLabel: "Introduction",
       photoAlt: "Profile photo of Josep Rivera",
       githubAria: "Josep Rivera on GitHub",
-      stats: [
-        { value: "2", label: "freelance clients" },
-        { value: "5,000+", label: "assets managed" },
-        { value: "< 3 s", label: "query response" },
-        { value: "4", label: "systems built" },
-      ],
     },
     about: {
       title: "About me",
@@ -204,13 +187,12 @@ export const translations = {
     },
     skills: {
       title: "Skills",
-      subtitle: "Every technology on this list ships in at least one of the projects above.",
+      subtitle: "Technologies I've used throughout my career and projects.",
       categoryMap: {
         Lenguajes: "Languages",
         "Bases de datos & ORM": "Databases & ORM",
-        "Calidad & Proceso": "Quality & Process",
+        "Herramientas & Tooling": "Tools & Tooling",
       } as Record<string, string>,
-      provenByLabel: "Used in",
     },
     experience: {
       title: "Education & Experience",

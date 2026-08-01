@@ -77,16 +77,9 @@ export function Hero() {
             </p>
           </div>
 
-          <p
-            className="animate-fade-up text-base text-storm-fg2 leading-relaxed max-w-md"
-            style={{ animationDelay: "200ms" }}
-          >
-            {t.description}
-          </p>
-
           <div
             className="animate-fade-up flex flex-wrap items-center gap-3"
-            style={{ animationDelay: "300ms" }}
+            style={{ animationDelay: "200ms" }}
           >
             <a
               href="#proyectos"
@@ -125,31 +118,18 @@ export function Hero() {
         </div>
 
         <div
-          className="animate-fade-scale flex shrink-0 flex-col items-center gap-7 md:items-end"
+          className="relative size-36 shrink-0 animate-fade-scale sm:size-40"
           style={{ animationDelay: "300ms" }}
         >
-          <div className="relative size-36 sm:size-40">
-            <div className="absolute inset-0 rounded-full bg-storm-accent/10 ring-2 ring-storm-accent/20" />
-            <Image
-              src="/images/profile.jpg"
-              alt={t.photoAlt}
-              fill
-              className="rounded-full object-cover"
-              priority
-              sizes="160px"
-            />
-          </div>
-
-          <div className="grid grid-cols-2 gap-x-8 gap-y-5 text-center md:text-right">
-            {t.stats.map((stat) => (
-              <div key={stat.label} className="flex flex-col">
-                <span className="text-2xl font-bold tabular-nums text-storm-fg sm:text-3xl">
-                  {stat.value}
-                </span>
-                <span className="mt-1 text-xs leading-snug text-storm-fg2">{stat.label}</span>
-              </div>
-            ))}
-          </div>
+          <div className="absolute inset-0 rounded-full bg-storm-accent/10 ring-2 ring-storm-accent/20" />
+          <Image
+            src="/images/profile.jpg"
+            alt={t.photoAlt}
+            fill
+            className="rounded-full object-cover"
+            priority
+            sizes="160px"
+          />
         </div>
       </div>
     </section>
