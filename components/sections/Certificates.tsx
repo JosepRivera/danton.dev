@@ -52,7 +52,7 @@ export function Certificates() {
             return (
               <article
                 key={cert.title}
-                className={`group relative flex flex-col rounded-2xl border border-storm-border bg-storm-bg2 overflow-hidden hover:border-storm-accent/40 hover:shadow-[0_0_32px_-4px_rgba(104,136,200,0.15)] transition-all duration-300 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
+                className={`group relative flex flex-col rounded-2xl border border-storm-border bg-storm-bg2 overflow-hidden hover:border-storm-accent/40 hover:shadow-[0_0_32px_-4px_rgba(104,136,200,0.15)] transition-[opacity,transform,border-color,box-shadow] duration-300 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
                 style={{ transitionDelay: inView ? `${100 + i * 80}ms` : "0ms" }}
               >
                 <div className={`h-0.5 w-full ${cfg.bar}`} />

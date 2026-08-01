@@ -24,34 +24,36 @@ export function Nav() {
   const t = translations[lang].nav;
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
 
-  useEffect(() => {
-    const observers: IntersectionObserver[] = [];
+    // A per-section IntersectionObserver required 30% visibility before
+    // marking a section active. Landing exactly on a nav-click target only
+    // just clears the fixed-nav offset, never 30%, so the highlight stayed
+    // on whatever section was active before the jump. Tracking the last
+    // section whose top has crossed the nav offset has no such threshold.
+    // Reading getBoundingClientRect on ~7 elements per scroll event is cheap
+    // enough to run unthrottled.
+    const update = () => {
+      setScrolled(window.scrollY > 50);
 
-    for (const id of sectionIds) {
-      const el = document.getElementById(id);
-      if (!el) continue;
-      const observer = new IntersectionObserver(
-        (entries) => {
-          for (const entry of entries) {
-            if (entry.isIntersecting) {
-              setActiveSection(id);
-            }
-          }
-        },
-        { threshold: 0.3, rootMargin: "-80px 0px -40% 0px" },
-      );
-      observer.observe(el);
-      observers.push(observer);
-    }
+      const offset = 81;
+      let current = sections[0]?.id ?? "hero";
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top <= offset) {
+          current = section.id;
+        }
+      }
+      setActiveSection(current);
+    };
 
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
     return () => {
-      for (const obs of observers) obs.disconnect();
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
     };
   }, []);
 

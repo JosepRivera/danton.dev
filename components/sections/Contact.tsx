@@ -145,7 +145,7 @@ export function Contact() {
                         />
                       </div>
                       <ArrowUpRight
-                        className="size-4 text-storm-fg2 group-hover:text-storm-fg group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300 opacity-0 group-hover:opacity-100"
+                        className="size-4 text-storm-fg2 group-hover:text-storm-fg group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-[color,transform,opacity] duration-300 opacity-0 group-hover:opacity-100"
                         aria-hidden="true"
                       />
                     </div>
