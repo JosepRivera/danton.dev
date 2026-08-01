@@ -42,3 +42,6 @@ next-env.d.ts
 .claude
 .agents
 .atl
+
+# impeccable design artifacts (local only)
+.impeccable
