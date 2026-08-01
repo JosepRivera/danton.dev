@@ -37,8 +37,6 @@ export function Skills() {
                     key={skill.name}
                     name={skill.name}
                     iconKey={skill.iconKey}
-                    provenBy={skill.provenBy}
-                    provenByLabel={t.provenByLabel}
                     index={catIndex * 5 + skillIndex}
                   />
                 ))}
