@@ -77,17 +77,32 @@ export function Nav() {
         className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4"
         aria-label={t.mainNav}
       >
-        {/* JR monogram logo */}
+        {/* Cat mark — keeps the monogram tile and its two-tone split: the line
+            work reads as storm-fg, the eyes carry the accent. */}
         <a
           href="#hero"
           className="group flex items-center gap-px rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-storm-accent"
           aria-label={t.goHome}
         >
           <span className="flex items-center justify-center size-9 rounded-lg border border-storm-border bg-storm-bg2 group-hover:border-storm-accent/40 transition-colors duration-200">
-            <span className="font-heading text-sm font-bold tracking-tight">
-              <span className="text-storm-fg">J</span>
-              <span className="text-storm-accent">R</span>
-            </span>
+            <svg
+              viewBox="0 0 24 24"
+              className="size-5 text-storm-fg"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.75"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M4 10.5V4l5 2.9" />
+              <path d="M20 10.5V4l-5 2.9" />
+              <path d="M9 6.9q3-1 6 0" />
+              <path d="M4 10.5c0 4.7 3.6 7.9 8 7.9s8-3.2 8-7.9" />
+              <path d="M11.1 14.2l.9.9.9-.9" />
+              <circle cx="9.2" cy="11.4" r="1.15" fill="currentColor" className="text-storm-accent" stroke="none" />
+              <circle cx="14.8" cy="11.4" r="1.15" fill="currentColor" className="text-storm-accent" stroke="none" />
+            </svg>
           </span>
         </a>
 

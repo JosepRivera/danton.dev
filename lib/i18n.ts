@@ -37,9 +37,10 @@ export const translations = {
     },
     about: {
       title: "Sobre mí",
-      bio1: "He construido software para clientes reales: una app en Flutter para operadores de campo, un sistema de gestión para un restaurante mediano y el inventario con IA de los laboratorios de Tecsup. En los tres llevé el proyecto del modelo de datos al deploy.",
-      bio2: "Trabajo con NestJS y FastAPI en el backend, React y Next.js en el frontend, Flutter y Kotlin en mobile. Estoy en el último año de Diseño y Desarrollo de Software en Tecsup, y lo que cada proyecto exigió por fuera del plan de estudios lo aprendí por mi cuenta.",
+      bio1: "Entre los 13 y los 15 años, lo que más me gustaba de una computadora era abrirla por dentro — cambiarle cosas, romperla, arreglarla, probar de todo sin buscar nada en particular. Esa curiosidad fue la que terminó llevándome a programar en serio.",
+      bio2: "Hoy estoy en mi último año de Diseño y Desarrollo de Software en Tecsup, y antes de terminar la carrera ya construyo software para clientes reales: una app para operadores de campo, un sistema de gestión para un restaurante y el inventario con IA de los propios laboratorios de Tecsup.",
       bio3: "No me interesa escribir código por escribir. Me interesa que el sistema funcione, que sea legible para el siguiente desarrollador y que resuelva algo real.",
+      bio4: "Fuera del código: gym, música y una lista de series que nunca termino.",
       languagesLabel: "Idiomas",
       languages: [
         { name: "Español", level: "Nativo" },
@@ -160,9 +161,10 @@ export const translations = {
     },
     about: {
       title: "About me",
-      bio1: "I've built software for real clients: a Flutter app for field operators, a management system for a mid-sized restaurant, and the AI inventory for Tecsup's labs. On all three I took the project from the data model through to deploy.",
-      bio2: "I work with NestJS and FastAPI on the backend, React and Next.js on the front end, Flutter and Kotlin on mobile. I'm in my final year of Software Design and Development at Tecsup, and whatever each project demanded beyond the syllabus, I taught myself.",
+      bio1: "Between 13 and 15, what I liked most about a computer was opening it up — swapping things around, breaking it, fixing it, trying everything without looking for anything in particular. That curiosity is what eventually got me programming for real.",
+      bio2: "Today I'm in my final year of Software Design and Development at Tecsup, and before finishing the degree I'm already building software for real clients: an app for field operators, a management system for a restaurant, and the AI inventory for Tecsup's own labs.",
       bio3: "I'm not interested in writing code for the sake of it. I care that the system works, that it's readable for the next developer, and that it solves something real.",
+      bio4: "Outside the code: the gym, music, and a list of shows I never finish.",
       languagesLabel: "Languages",
       languages: [
         { name: "Spanish", level: "Native" },

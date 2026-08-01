@@ -58,6 +58,7 @@ export function About() {
             <p className="text-storm-fg2 leading-relaxed">{t.bio1}</p>
             <p className="text-storm-fg2 leading-relaxed">{t.bio2}</p>
             <p className="text-storm-fg2 leading-relaxed">{t.bio3}</p>
+            <p className="text-storm-fg2 leading-relaxed">{t.bio4}</p>
 
             {/* Languages */}
             <div className="mt-1 flex flex-col gap-2">
